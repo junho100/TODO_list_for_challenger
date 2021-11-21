@@ -10,7 +10,7 @@ monthly goal
     username : string,
     content : string, // 해당 월 목표 내용
     updateAt : datetime,
-    targetMonth : datetime,
+    targetMonth : string,
     isDone : boolean // 완료 여부
 }
 ```
