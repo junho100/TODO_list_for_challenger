@@ -29,6 +29,7 @@
 - [ ] monthly goal api documentation
 - [ ] weekly challenge api documentation
 - [ ] 대략적인 서버 구조 설계(Route, Controller, Data)
+- [ ] 메모리 임시 DB 구현
 - [ ] postman setup
 - [ ] monthly goal
 - [ ] weekly challenge
