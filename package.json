@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "backend toy project <todo list for challenger>",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "keywords": [
     "nodejs",
@@ -14,5 +16,11 @@
     "project"
   ],
   "author": "JunHoBaek",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
 }
