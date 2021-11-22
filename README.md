@@ -29,11 +29,13 @@
 - [x] monthly goal api documentation
 - [ ] weekly challenge api documentation
 - [x] 대략적인 서버 구조 설계(Route, Controller, Data)
-- [ ] 메모리 임시 DB 구현 (monthly goal) (진행중)
+- [x] 메모리 임시 DB 구현 (monthly goal)
 - [ ] 메모리 임시 DB 구현 (weekly challenge)
-- [ ] postman setups (monthly goal) (진행중)
+- [x] postman setups (monthly goal)
 - [ ] postman setups (weekly challenge)
 - [ ] monthly goal (진행중)
+  - [ ] targetMonth validation 구현
+  - [ ] controller, router 분리
 - [ ] weekly challenge
 - [ ] auth api documentation
 - [ ] postman setup for auth
