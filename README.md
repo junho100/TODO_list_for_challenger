@@ -36,6 +36,7 @@
 - [ ] monthly goal (진행중)
   - [ ] targetMonth validation 구현
   - [ ] controller, router 분리
+  - [ ] 추가 예외처리 확인, 구현
 - [ ] weekly challenge
 - [ ] auth api documentation
 - [ ] postman setup for auth
