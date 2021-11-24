@@ -18,8 +18,24 @@ let challenges = [
     targetWeek: 1,
     isDone: false,
   },
+  {
+    id: "1",
+    username: "bob",
+    content: "express 공식문서 100회독",
+    updatedAt: new Date().toString(),
+    targetMonth: "202011",
+    targetWeek: 1,
+    isDone: false,
+  },
 ];
 
 export async function getByUsername(username) {
   return challenges.filter((challenge) => challenge.username === username);
+}
+
+export async function getByTargetMonth(username, targetMonth) {
+  return challenges.filter(
+    (challenge) =>
+      challenge.username === username && challenge.targetMonth === targetMonth
+  );
 }
