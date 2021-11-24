@@ -27,7 +27,7 @@
 ## TODO
 
 - [x] monthly goal api documentation
-- [ ] weekly challenge api documentation
+- [x] weekly challenge api documentation
 - [x] 대략적인 서버 구조 설계(Route, Controller, Data)
 - [x] 메모리 임시 DB 구현 (monthly goal)
 - [ ] 메모리 임시 DB 구현 (weekly challenge)
@@ -38,9 +38,11 @@
   - [x] controller, router 분리
   - [ ] 추가 예외처리 확인, 구현
 - [ ] weekly challenge
+  - [ ] 중복검사 및 예외처리 구현
 - [ ] auth api documentation
 - [ ] postman setup for auth
 - [ ] auth 구현
 - [ ] DB MySQL로 전환 (using Sequelize)
 - [ ] 간단한 프론트엔드 구현, 연결
 - [ ] api 문서화, github 연동 (using Swagger)
+  - [ ] api 모듈화 -> 보기쉽게 작성
