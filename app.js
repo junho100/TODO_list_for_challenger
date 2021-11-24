@@ -4,6 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import config from "./config.js";
 import goalRouter from "./router/goals.js";
+import challengeRouter from "./router/challenges.js";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(morgan("tiny"));
 
 app.use("/goals", goalRouter);
+app.use("/challs", challengeRouter);
 
 app.use((req, res, next) => {
   res.status(404).send("NOT FOUND");

@@ -135,7 +135,7 @@ response 200
 
 ---
 
-## GET /chall?username=:username
+## GET /challs?username=:username
 
 get my challenges
 
@@ -147,7 +147,7 @@ response
 }
 ```
 
-## GET /chall?username=:username
+## GET /challs?username=:username
 
 get my challenges in specific month
 
@@ -167,7 +167,7 @@ response
 }
 ```
 
-## GET /chall?username=:username
+## GET /challs?username=:username
 
 get my challenge in specific month, week
 
@@ -188,7 +188,7 @@ response
 }
 ```
 
-## POST /chall?username=:username
+## POST /challs?username=:username
 
 create challenge <br>
 request
@@ -209,7 +209,7 @@ response 201
 }
 ```
 
-## PUT /chall?username=:username
+## PUT /challs?username=:username
 
 update challenge <br>
 request
@@ -230,7 +230,7 @@ response 200
 }
 ```
 
-## DELETE /chall?username=:username
+## DELETE /challs?username=:username
 
 delete challenge <br>
 request
@@ -244,7 +244,7 @@ request
 
 response 204
 
-## PUT /chall?username=:username
+## PUT /challs?username=:username
 
 update complete or not
 request

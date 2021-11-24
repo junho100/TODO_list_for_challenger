@@ -1,6 +1,15 @@
+// {
+//   id : string,
+//   username : string,
+//   content : string, // 해당 월 목표 내용
+//   updateAt : datetime,
+//   targetMonth : string,
+//   isDone : boolean // 완료 여부
+// }
+
 let goals = [
   {
-    id: 0,
+    id: "0",
     username: "bob",
     content: "express 개인 프로젝트 하기!",
     updatedAt: new Date().toString(),
@@ -22,7 +31,7 @@ export async function getBytargetMonth(username, targetMonth) {
 
 export async function create(content, targetMonth, username) {
   const goal = {
-    id: idx,
+    id: String(idx),
     username,
     content,
     updatedAt: new Date().toString(),
