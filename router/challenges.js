@@ -29,7 +29,66 @@ router.get("/", async (req, res, next) => {
   return res.status(200).send(challenges);
 });
 
-//TODO!
-router.get("/:week", async (req, res, next) => {});
+router.get("/:week", async (req, res, next) => {
+  const username = checkAndGetUser(req);
+  const targetMonth = req.body.targetMonth;
+  const targetWeek = req.params.week;
+  if (!(targetMonth && targetWeek)) {
+    return res.status(404).send("Not Found");
+  }
+  const challenge = await challengeRepositoy.getByTargetWeek(
+    username,
+    targetMonth,
+    targetWeek
+  );
+  if (!challenge) {
+    return res.status(404).send("Not Found");
+  }
+  return res.status(200).json(challenge);
+});
+
+router.post("/", async (req, res, next) => {
+  const username = checkAndGetUser(req);
+  const { content, targetMonth, targetWeek } = req.body;
+  const challenge = await challengeRepositoy.create(
+    username,
+    content,
+    targetMonth,
+    targetWeek
+  );
+  return res.status(201).json(challenge);
+});
+
+router.put("/:week", async (req, res, next) => {
+  const username = checkAndGetUser(req);
+  const { targetMonth, content } = req.body;
+  const targetWeek = req.params.week;
+  if (!content) {
+    const challenge = await challengeRepositoy.updateDone(
+      username,
+      targetMonth,
+      targetWeek
+    );
+    return res.status(200).json(challenge);
+  }
+  const challenge = await challengeRepositoy.update(
+    username,
+    targetMonth,
+    targetWeek,
+    content
+  );
+  if (challenge) {
+    return res.status(200).json(challenge);
+  }
+  return res.status(404).send("Not Found");
+});
+
+router.delete("/:week", async (req, res, next) => {
+  const username = checkAndGetUser(req);
+  const targetMonth = req.body.targetMonth;
+  const targetWeek = req.params.week;
+  await challengeRepositoy.remove(username, targetMonth, targetWeek);
+  return res.sendStatus(204);
+});
 
 export default router;
