@@ -40,7 +40,7 @@
   - [ ] 추가 예외처리 확인, 구현
 - [ ] weekly challenge (진행중)
   - [x] 기본 구현
-  - [ ] controller, router 분리
+  - [x] controller, router 분리
   - [ ] 중복검사 및 예외처리 구현
 - [ ] auth api documentation
 - [ ] postman setup for auth
