@@ -47,5 +47,8 @@
 - [ ] auth 구현
 - [ ] DB MySQL로 전환 (using Sequelize)
 - [ ] 간단한 프론트엔드 구현, 연결
+  - [ ] goal, challenge 구현 후
+  - [ ] validation 구현 후
+  - [ ] auth 구현 후
 - [ ] api 문서화, github 연동 (using Swagger)
   - [ ] api 모듈화 -> 보기쉽게 작성
