@@ -31,7 +31,8 @@
 - [x] monthly goal api documentation
 - [x] weekly challenge api documentation
 - [x] 대략적인 서버 구조 설계(Route, Controller, Data)
-- [ ] Monthly goal router 수정(GET 요청) (진행중)
+- [x] Monthly goal router 수정(GET 요청)
+  - [x] postman 수정
 - [ ] Weekly challenge router 수정(GET 요청)
 - [x] 메모리 임시 DB 구현 (monthly goal)
 - [x] 메모리 임시 DB 구현 (weekly challenge)
