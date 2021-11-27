@@ -28,22 +28,22 @@
 
 ## TODO
 
-- [x] monthly goal api documentation
-- [x] weekly challenge api documentation
-- [x] 대략적인 서버 구조 설계(Route, Controller, Data)
-- [x] Monthly goal router 수정(GET 요청)
-  - [x] postman 수정
+- [X] monthly goal api documentation
+- [X] weekly challenge api documentation
+- [X] 대략적인 서버 구조 설계(Route, Controller, Data)
+- [X] Monthly goal router 수정(GET 요청)
+  - [X] postman 수정
 - [ ] Weekly challenge router 수정(GET 요청)
-- [x] 메모리 임시 DB 구현 (monthly goal)
-- [x] 메모리 임시 DB 구현 (weekly challenge)
-- [x] postman setups (monthly goal)
-- [x] postman setups (weekly challenge)
-- [x] monthly goal
-  - [x] 기본 구현
-  - [x] controller, router 분리
-- [x] weekly challenge
-  - [x] 기본 구현
-  - [x] controller, router 분리
+- [X] 메모리 임시 DB 구현 (monthly goal)
+- [X] 메모리 임시 DB 구현 (weekly challenge)
+- [X] postman setups (monthly goal)
+- [X] postman setups (weekly challenge)
+- [X] monthly goal
+  - [X] 기본 구현
+  - [X] controller, router 분리
+- [X] weekly challenge
+  - [X] 기본 구현
+  - [X] controller, router 분리
 - [ ] validation 구현
 - [ ] goal, challenge 추가 예외처리 확인, 구현
 - [ ] auth api documentation
