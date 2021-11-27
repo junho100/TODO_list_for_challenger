@@ -16,6 +16,14 @@ let goals = [
     targetMonth: "202111",
     isDone: false,
   },
+  {
+    id: "1",
+    username: "bob",
+    content: "koa 개인 프로젝트 하기!",
+    updatedAt: new Date().toString(),
+    targetMonth: "202112",
+    isDone: false,
+  },
 ];
 let idx = 1;
 

@@ -24,24 +24,27 @@
 
 ## Discussion & Obstacles
 
+### GET 요청에 request body 추가
+
 ## TODO
 
 - [x] monthly goal api documentation
 - [x] weekly challenge api documentation
 - [x] 대략적인 서버 구조 설계(Route, Controller, Data)
+- [ ] Monthly goal router 수정(GET 요청) (진행중)
+- [ ] Weekly challenge router 수정(GET 요청)
 - [x] 메모리 임시 DB 구현 (monthly goal)
-- [x] 메모리 임시 DB 구현 (weekly challenge) (진행중)
+- [x] 메모리 임시 DB 구현 (weekly challenge)
 - [x] postman setups (monthly goal)
 - [x] postman setups (weekly challenge)
-- [ ] monthly goal (진행중)
-  - [x] 기본 구현
-  - [ ] targetMonth validation 구현
-  - [x] controller, router 분리
-  - [ ] 추가 예외처리 확인, 구현
-- [ ] weekly challenge (진행중)
+- [x] monthly goal
   - [x] 기본 구현
   - [x] controller, router 분리
-  - [ ] 중복검사 및 예외처리 구현
+- [x] weekly challenge
+  - [x] 기본 구현
+  - [x] controller, router 분리
+- [ ] validation 구현
+- [ ] goal, challenge 추가 예외처리 확인, 구현
 - [ ] auth api documentation
 - [ ] postman setup for auth
 - [ ] auth 구현

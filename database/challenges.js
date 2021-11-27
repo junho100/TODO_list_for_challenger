@@ -7,7 +7,7 @@
     targetWeek : string,
     isDone : boolean // 완료 여부
 }*/
-let idx = 2;
+let idx = 4;
 
 let challenges = [
   {
@@ -22,10 +22,28 @@ let challenges = [
   {
     id: "1",
     username: "bob",
-    content: "express 공식문서 100회독",
+    content: "express 공식문서 2회독",
     updatedAt: new Date().toString(),
-    targetMonth: "202011",
+    targetMonth: "202111",
+    targetWeek: "2",
+    isDone: false,
+  },
+  {
+    id: "2",
+    username: "bob",
+    content: "express 공식문서 3회독",
+    updatedAt: new Date().toString(),
+    targetMonth: "202112",
     targetWeek: "1",
+    isDone: false,
+  },
+  {
+    id: "3",
+    username: "bob",
+    content: "express 공식문서 4회독",
+    updatedAt: new Date().toString(),
+    targetMonth: "202112",
+    targetWeek: "2",
     isDone: false,
   },
 ];

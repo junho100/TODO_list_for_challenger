@@ -42,16 +42,9 @@ response 200
 }
 ```
 
-## GET /goals?username=:username
+## GET /goals/:targetMonth?username=:username
 
 get my goals in specific month <br>
-request
-
-```
-{
-    targetMonth
-}
-```
 
 response 200
 
@@ -61,15 +54,14 @@ response 200
 }
 ```
 
-## POST /goals?username=:username
+## POST /goals/:targetMonth?username=:username
 
 create goal <br>
 request
 
 ```
 {
-    content,
-    targetMonth
+    content
 }
 ```
 
@@ -81,14 +73,13 @@ response 201
 }
 ```
 
-## PUT /goals?username=:username
+## PUT /goals/targetMonth?username=:username
 
 update goal <br>
 request
 
 ```
 {
-    targetMonth,
     content
 }
 ```
@@ -101,29 +92,15 @@ response 200
 }
 ```
 
-## DELETE /goals?username=:username
+## DELETE /goals/targetMonth?username=:username
 
 delete goal <br>
-request
-
-```
-{
-    targetMonth
-}
-```
 
 response 204
 
-## PUT /goals?username=:username
+## PUT /goals/targetMonth?username=:username
 
 update complete or not
-request
-
-```
-{
-    targetMonth
-}
-```
 
 response 200
 
