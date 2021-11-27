@@ -73,7 +73,7 @@ response 201
 }
 ```
 
-## PUT /goals/targetMonth?username=:username
+## PUT /goals/:targetMonth?username=:username
 
 update goal <br>
 request
@@ -92,12 +92,6 @@ response 200
 }
 ```
 
-## DELETE /goals/targetMonth?username=:username
-
-delete goal <br>
-
-response 204
-
 ## PUT /goals/targetMonth?username=:username
 
 update complete or not
@@ -109,6 +103,12 @@ response 200
     goal
 }
 ```
+
+## DELETE /goals/:targetMonth?username=:username
+
+delete goal <br>
+
+response 204
 
 ---
 

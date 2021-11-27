@@ -8,27 +8,37 @@ function checkAndGetUser(req) {
   return username;
 }
 
+export async function getAllGoal(req, res, next) {
+  const username = checkAndGetUser(req);
+  const goals = await goalRepository.getByUsername(username);
+  if (goals) {
+    return res.status(200).send(goals);
+  }
+  return res.status(404).send("Not Found");
+}
+
 export async function getGoal(req, res, next) {
   const username = checkAndGetUser(req);
-  const targetMonth = req.body.targetMonth;
-  if (targetMonth) {
-    const goal = await goalRepository.getBytargetMonth(username, targetMonth);
+  const targetMonth = req.params.targetMonth;
+  const goal = await goalRepository.getBytargetMonth(username, targetMonth);
+  if (goal) {
     return res.status(200).json(goal);
   }
-  const goals = await goalRepository.getByUsername(username);
-  return res.status(200).send(goals);
+  return res.status(404).send("Not Found");
 }
 
 export async function createGoal(req, res, next) {
   const username = checkAndGetUser(req);
-  const { content, targetMonth } = req.body;
+  const targetMonth = req.params.targetMonth;
+  const content = req.body.content;
   const goal = await goalRepository.create(content, targetMonth, username);
   return res.status(201).json(goal);
 }
 
 export async function updateGoal(req, res, next) {
   const username = checkAndGetUser(req);
-  const { content, targetMonth } = req.body;
+  const targetMonth = req.params.targetMonth;
+  const content = req.body.content;
   if (content) {
     const goal = await goalRepository.updateContent(
       content,
@@ -43,7 +53,7 @@ export async function updateGoal(req, res, next) {
 
 export async function deleteGoal(req, res, next) {
   const username = checkAndGetUser(req);
-  const targetMonth = req.body.targetMonth;
+  const targetMonth = req.params.targetMonth;
   await goalRepository.remove(username, targetMonth);
   return res.sendStatus(204);
 }

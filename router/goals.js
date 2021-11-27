@@ -3,12 +3,14 @@ import * as goalController from "../controller/goal.js";
 
 const router = Router("/goals");
 
-router.get("/", goalController.getGoal);
+router.get("/", goalController.getAllGoal);
 
-router.post("/", goalController.createGoal);
+router.get("/:targetMonth", goalController.getGoal);
 
-router.put("/", goalController.updateGoal);
+router.post("/:targetMonth", goalController.createGoal);
 
-router.delete("/", goalController.deleteGoal);
+router.put("/:targetMonth", goalController.updateGoal);
+
+router.delete("/:targetMonth", goalController.deleteGoal);
 
 export default router;
