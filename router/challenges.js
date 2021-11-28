@@ -3,13 +3,15 @@ import * as challengeController from "../controller/challenge.js";
 
 const router = Router("/challs");
 
-router.get("/", challengeController.getChallenge);
+router.get("/", challengeController.getAllChallenge);
 
-router.get("/:week", challengeController.getChallengeByWeek);
+router.get("/:targetMonth", challengeController.getChallengeByMonth);
 
-router.post("/", challengeController.createChallenge);
+router.get("/:targetMonth/:targetWeek", challengeController.getChallengeByWeek);
 
-router.put("/:week", challengeController.updateChallenge);
+router.post("/:targetMonth/:targetWeek", challengeController.createChallenge);
+
+router.put("/:targetMonth/:targetWeek", challengeController.updateChallenge);
 
 router.delete("/:week", challengeController.removeChalleng);
 

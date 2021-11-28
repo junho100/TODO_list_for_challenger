@@ -116,7 +116,7 @@ response 204
 
 get my challenges
 
-response
+response 200
 
 ```
 {
@@ -124,19 +124,11 @@ response
 }
 ```
 
-## GET /challs?username=:username
+## GET /challs/:targetMonth?username=:username
 
 get my challenges in specific month
 
-request
-
-```
-{
-    targetMonth
-}
-```
-
-response
+response 200
 
 ```
 {
@@ -144,19 +136,11 @@ response
 }
 ```
 
-## GET /challs/:week?username=:username
+## GET /challs/:targetMonth/:targetWeek?username=:username
 
 get my challenge in specific month, week
 
-request
-
-```
-{
-    targetMonth
-}
-```
-
-response
+response 200
 
 ```
 {
@@ -164,16 +148,14 @@ response
 }
 ```
 
-## POST /challs?username=:username
+## POST /challs/:targetMonth/:targetWeek?username=:username
 
 create challenge <br>
 request
 
 ```
 {
-    content,
-    targetMonth,
-    targetWeek
+    content
 }
 ```
 
@@ -185,14 +167,13 @@ response 201
 }
 ```
 
-## PUT /challs/:week?username=:username
+## PUT /challs/:targetMonth/:targetWeek?username=:username
 
 update challenge <br>
 request
 
 ```
 {
-    targetMonth,
     content
 }
 ```
@@ -205,29 +186,9 @@ response 200
 }
 ```
 
-## DELETE /challs/:week?username=:username
-
-delete challenge <br>
-request
-
-```
-{
-    targetMonth
-}
-```
-
-response 204
-
-## PUT /challs/:week?username=:username
+## PUT /challs/:targetMonth/:targetWeek?username=:username
 
 update complete or not
-request
-
-```
-{
-    targetMonth
-}
-```
 
 response 200
 
@@ -236,3 +197,9 @@ response 200
     challenge
 }
 ```
+
+## DELETE /challs/:targetMonth/:targetWeek?username=:username
+
+delete challenge <br>
+
+response 204
