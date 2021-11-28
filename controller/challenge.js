@@ -8,28 +8,36 @@ function checkAndGetUser(req) {
   return username;
 }
 
-export async function getChallenge(req, res, next) {
+export async function getAllChallenge(req, res, next) {
   const username = checkAndGetUser(req);
-  const targetMonth = req.body.targetMonth;
-  let challenges = undefined;
-  if (targetMonth) {
-    challenges = await challengeRepositoy.getByTargetMonth(
-      username,
-      targetMonth
-    );
-  } else {
-    challenges = await challengeRepositoy.getByUsername(username);
-  }
+  const challenges = await challengeRepositoy.getByUsername(username);
   if (challenges.length === 0) {
+    return res.status(404).send(`there is not data for ${username}`);
+  }
+  return res.status(200).send(challenges);
+}
+
+export async function getChallengeByMonth(req, res, next) {
+  const username = checkAndGetUser(req);
+  const targetMonth = req.params.targetMonth;
+  if (!targetMonth) {
     return res.status(404).send("Not Found");
+  }
+  const challenges = await challengeRepositoy.getByTargetMonth(
+    username,
+    targetMonth
+  );
+  if (challenges.length === 0) {
+    return res
+      .status(404)
+      .send(`there is not data for ${username} in ${targetMonth}`);
   }
   return res.status(200).send(challenges);
 }
 
 export async function getChallengeByWeek(req, res, next) {
   const username = checkAndGetUser(req);
-  const targetMonth = req.body.targetMonth;
-  const targetWeek = req.params.week;
+  const { targetMonth, targetWeek } = req.params;
   if (!(targetMonth && targetWeek)) {
     return res.status(404).send("Not Found");
   }
@@ -46,7 +54,8 @@ export async function getChallengeByWeek(req, res, next) {
 
 export async function createChallenge(req, res, next) {
   const username = checkAndGetUser(req);
-  const { content, targetMonth, targetWeek } = req.body;
+  const { targetMonth, targetWeek } = req.params;
+  const content = req.body.content;
   const challenge = await challengeRepositoy.create(
     username,
     content,
@@ -58,10 +67,10 @@ export async function createChallenge(req, res, next) {
 
 export async function updateChallenge(req, res, next) {
   const username = checkAndGetUser(req);
-  const { targetMonth, content } = req.body;
-  const targetWeek = req.params.week;
+  const { targetMonth, targetWeek } = req.params;
+  const content = req.body.content;
   if (!content) {
-    const challenge = await challengeRepositoy.updateDone(
+    const challenge = await challengeRepositoy.toggleDone(
       username,
       targetMonth,
       targetWeek
@@ -82,8 +91,8 @@ export async function updateChallenge(req, res, next) {
 
 export async function removeChalleng(req, res, next) {
   const username = checkAndGetUser(req);
-  const targetMonth = req.body.targetMonth;
-  const targetWeek = req.params.week;
+  const { targetMonth, targetWeek } = req.params;
+  const content = req.body.content;
   await challengeRepositoy.remove(username, targetMonth, targetWeek);
   return res.sendStatus(204);
 }

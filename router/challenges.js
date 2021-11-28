@@ -13,6 +13,6 @@ router.post("/:targetMonth/:targetWeek", challengeController.createChallenge);
 
 router.put("/:targetMonth/:targetWeek", challengeController.updateChallenge);
 
-router.delete("/:week", challengeController.removeChalleng);
+router.delete("/:targetMonth/:targetWeek", challengeController.removeChalleng);
 
 export default router;

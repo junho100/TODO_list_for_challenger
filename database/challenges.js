@@ -98,7 +98,7 @@ export async function remove(username, targetMonth, targetWeek) {
   challenges = newChallenge;
 }
 
-export async function updateDone(username, targetMonth, targetWeek) {
+export async function toggleDone(username, targetMonth, targetWeek) {
   const challenge = await getByTargetWeek(username, targetMonth, targetWeek);
   if (challenge) {
     if (challenge.isDone) {

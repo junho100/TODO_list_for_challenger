@@ -35,8 +35,8 @@
 - [x] 대략적인 서버 구조 설계(Route, Controller, Data)
 - [x] Monthly goal router 수정(GET 요청)
   - [x] postman 수정
-- [ ] Weekly challenge router 수정(GET 요청) (진행중)
-  - [ ] postman 수정
+- [x] Weekly challenge router 수정(GET 요청)
+  - [x] postman 수정
 - [x] 메모리 임시 DB 구현 (monthly goal)
 - [x] 메모리 임시 DB 구현 (weekly challenge)
 - [x] postman setups (monthly goal)
@@ -56,7 +56,7 @@
 - [ ] 간단한 프론트엔드 구현, 연결
   - [ ] goal, challenge 구현 후 (진행중)
     - [x] goal 구현
-    - [ ] challenge 구현
+    - [ ] challenge 구현 (진행중)
     - [ ] 반응형 구현
   - [ ] validation 구현 후
   - [ ] auth 구현 후
