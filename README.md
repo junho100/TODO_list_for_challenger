@@ -24,6 +24,8 @@
 
 ## Discussion & Obstacles
 
+### React useEffect 속 무한리랜더링(setState)
+
 ### GET 요청에 request body 추가
 
 ## TODO
@@ -51,7 +53,7 @@
 - [ ] auth 구현
 - [ ] DB MySQL로 전환 (using Sequelize)
 - [ ] 간단한 프론트엔드 구현, 연결
-  - [ ] goal, challenge 구현 후
+  - [ ] goal, challenge 구현 후 (진행중)
   - [ ] validation 구현 후
   - [ ] auth 구현 후
 - [ ] api 문서화, github 연동 (using Swagger)
