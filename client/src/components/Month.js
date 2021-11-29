@@ -1,5 +1,7 @@
+import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { React, useEffect, useState } from "react";
+import MonthSelector from "./MonthSelector.js";
+import MonthViewer from "./MonthViewer.js";
 
 const Months = [
   "Unknown",
@@ -17,41 +19,36 @@ const Months = [
   "December",
 ];
 
+const username = "bob";
+
 function Month(props) {
-  const [monthGoal, setMonthGoal] = useState({
-    id: undefined,
-    username: undefined,
-    content: undefined,
-    updateAt: undefined,
-    targetMonth: undefined,
-    isDone: undefined,
-  });
+  const [goals, setGoals] = useState([
+    {
+      id: undefined,
+      username: undefined,
+      content: undefined,
+      updateAt: undefined,
+      targetMonth: undefined,
+      isDone: undefined,
+    },
+  ]);
+  const [presentMonth, setPresentMonth] = useState("");
 
   useEffect(() => {
-    const fetchMonth = async () => {
-      const data = await axios.get(
-        "http://localhost:8080/goals/202111?username=bob"
+    const fetchGoals = async () => {
+      const { data: data } = await axios.get(
+        `http://localhost:8080/goals?username=${username}`
       );
-      if (monthGoal.id !== data.data.id) {
-        const result = {
-          ...data.data,
-          targetMonth: Months[parseInt(data.data.targetMonth.slice(4, 6))],
-          year: data.data.targetMonth.slice(0, 4),
-        };
-        setMonthGoal(result);
-      }
+      console.log(data === goals);
+      console.log(data === goals);
     };
+    fetchGoals();
+  }, [goals]);
 
-    fetchMonth();
-  }, [monthGoal]);
   return (
     <div>
-      <h1>
-        {monthGoal.year} {monthGoal.username}'s Goal in {monthGoal.targetMonth}
-      </h1>
-      <ul>
-        <li>{monthGoal.content}</li>
-      </ul>
+      <MonthSelector></MonthSelector>
+      <MonthViewer></MonthViewer>
     </div>
   );
 }
