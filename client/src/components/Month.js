@@ -22,33 +22,24 @@ const Months = [
 const username = "bob";
 
 function Month(props) {
-  const [goals, setGoals] = useState([
-    {
-      id: undefined,
-      username: undefined,
-      content: undefined,
-      updateAt: undefined,
-      targetMonth: undefined,
-      isDone: undefined,
-    },
-  ]);
-  const [presentMonth, setPresentMonth] = useState("");
+  const [goalDatas, setGoalDatas] = useState();
+  const [targetMonths, setTargetMonths] = useState();
 
-  ///TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const getGoalDatas = async () => {
+    const { data: data } = await axios.get(
+      `http://localhost:8080/goals?username=${username}`
+    );
+    setGoalDatas(data);
+    setTargetMonths(data.map((d) => d.targetMonth));
+  };
+
   useEffect(() => {
-    const fetchGoals = async () => {
-      const { data: data } = await axios.get(
-        `http://localhost:8080/goals?username=${username}`
-      );
-      console.log(data === goals);
-      console.log(data === goals);
-    };
-    fetchGoals();
-  }, [goals]);
+    getGoalDatas();
+  }, []);
 
   return (
     <div>
-      <MonthSelector></MonthSelector>
+      <MonthSelector targetMonths={targetMonths}></MonthSelector>
       <MonthViewer></MonthViewer>
     </div>
   );
