@@ -1,7 +1,7 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 
 function MonthViewer(props) {
-  return <div></div>;
+  return <div>Choose Month!</div>;
 }
 
 export default MonthViewer;
