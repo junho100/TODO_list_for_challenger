@@ -1,6 +1,9 @@
 import { React } from "react";
+import axios from "axios";
 
-function MonthController({ mode }) {
+const username = "bob";
+
+function MonthController({ mode, onGetGoalDatas }) {
   if (mode === 0) {
     return (
       <form>
@@ -8,8 +11,23 @@ function MonthController({ mode }) {
         <input placeholder="month"></input>
         <input placeholder="content"></input>
         <button
+          type="submit"
           onClick={(e) => {
             e.preventDefault();
+            const targetMonth =
+              String(e.target.form[0].value) + String(e.target.form[1].value);
+            const content = String(e.target.form[2].value);
+            console.log(targetMonth, content);
+            axios
+              .post(
+                `http://localhost:8080/goals/${targetMonth}?username=${username}`,
+                {
+                  content,
+                }
+              )
+              .then(() => {
+                onGetGoalDatas();
+              });
           }}
         >
           submit

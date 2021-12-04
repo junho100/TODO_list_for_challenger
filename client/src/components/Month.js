@@ -42,7 +42,10 @@ function Month(props) {
         presentMonth={presentMonth}
         onGetGoalByMonth={getGoalByMonth}
       ></MonthViewer>
-      <MonthController mode={mode}></MonthController>
+      <MonthController
+        mode={mode}
+        onGetGoalDatas={getGoalDatas}
+      ></MonthController>
     </div>
   );
 }
