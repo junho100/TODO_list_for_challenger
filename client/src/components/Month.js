@@ -2,26 +2,12 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import MonthSelector from "./MonthSelector.js";
 import MonthViewer from "./MonthViewer.js";
-
-const Months = [
-  "Unknown",
-  "January",
-  "Febuary",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+import MonthController from "./MonthController.js";
 
 const username = "bob";
 
 function Month(props) {
+  const [mode, setMode] = useState(1); // 0:C, 1:R, 2:U, 3:D
   const [goalDatas, setGoalDatas] = useState([]);
   const [targetMonths, setTargetMonths] = useState([]);
   const [presentMonth, setPresentMonth] = useState();
@@ -50,11 +36,13 @@ function Month(props) {
       <MonthSelector
         targetMonths={targetMonths}
         onSetPresentMonth={setPresentMonth}
+        onSetMode={setMode}
       ></MonthSelector>
       <MonthViewer
         presentMonth={presentMonth}
         onGetGoalByMonth={getGoalByMonth}
       ></MonthViewer>
+      <MonthController mode={mode}></MonthController>
     </div>
   );
 }

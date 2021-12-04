@@ -1,20 +1,28 @@
 import { React, useEffect, useState } from "react";
 
-function MonthSelector(props) {
+function MonthSelector({ targetMonths, onSetPresentMonth, onSetMode }) {
   return (
     <div>
-      {props.targetMonths.map((targetMonth) => {
+      {targetMonths.map((targetMonth) => {
         return (
           <button
             key={targetMonth}
             onClick={(e) => {
-              props.onSetPresentMonth(e.target.innerText);
+              onSetPresentMonth(e.target.innerText);
+              onSetMode(1);
             }}
           >
             {targetMonth}
           </button>
         );
       })}
+      <button
+        onClick={() => {
+          onSetMode(0);
+        }}
+      >
+        +
+      </button>
     </div>
   );
 }
