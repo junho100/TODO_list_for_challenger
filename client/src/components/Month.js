@@ -41,8 +41,10 @@ function Month(props) {
       <MonthViewer
         presentMonth={presentMonth}
         onGetGoalByMonth={getGoalByMonth}
+        goalDatas={goalDatas}
       ></MonthViewer>
       <MonthController
+        presentMonth={presentMonth}
         mode={mode}
         onGetGoalDatas={getGoalDatas}
       ></MonthController>

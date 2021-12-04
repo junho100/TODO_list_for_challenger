@@ -5,15 +5,33 @@ function MonthSelector({ targetMonths, onSetPresentMonth, onSetMode }) {
     <div>
       {targetMonths.map((targetMonth) => {
         return (
-          <button
-            key={targetMonth}
-            onClick={(e) => {
-              onSetPresentMonth(e.target.innerText);
-              onSetMode(1);
-            }}
-          >
-            {targetMonth}
-          </button>
+          <div key={targetMonth}>
+            <button
+              key={targetMonth}
+              onClick={(e) => {
+                onSetPresentMonth(e.target.innerText);
+                onSetMode(1);
+              }}
+            >
+              {targetMonth}
+            </button>
+            <button
+              key="update"
+              onClick={() => {
+                onSetMode(2);
+              }}
+            >
+              Update
+            </button>
+            <button
+              key="delete"
+              onClick={() => {
+                onSetMode(3);
+              }}
+            >
+              Delete
+            </button>
+          </div>
         );
       })}
       <button

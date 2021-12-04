@@ -16,7 +16,7 @@ const Months = [
   "December",
 ];
 
-function MonthViewer({ presentMonth, onGetGoalByMonth }) {
+function MonthViewer({ presentMonth, onGetGoalByMonth, goalDatas }) {
   const [monthData, setMonthData] = useState({
     id: undefined,
     username: undefined,
@@ -32,8 +32,8 @@ function MonthViewer({ presentMonth, onGetGoalByMonth }) {
   useEffect(() => {
     if (presentMonth) {
       fetchMonthData(presentMonth);
-    }
-  }, [presentMonth]);
+    } // TODO : update submit 후 바로 리랜더링 구현!
+  }, [presentMonth, goalDatas]);
   if (monthData.id) {
     const idx = parseInt(monthData.targetMonth.slice(4, 6));
     const strMonth = monthData.targetMonth.slice(0, 4) + "  " + Months[idx];
