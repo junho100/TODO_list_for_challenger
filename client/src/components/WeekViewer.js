@@ -1,7 +1,7 @@
 import { React } from "react";
 
-function WeekSelector({}) {
+function WeekViewer({}) {
   return <div></div>;
 }
 
-export default WeekSelector;
+export default WeekViewer;

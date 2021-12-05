@@ -46,6 +46,15 @@ let challenges = [
     targetWeek: "2",
     isDone: false,
   },
+  {
+    id: "4",
+    username: "bob",
+    content: "express 공식문서 5회독",
+    updatedAt: new Date().toString(),
+    targetMonth: "202111",
+    targetWeek: "3",
+    isDone: false,
+  },
 ];
 
 export async function getByUsername(username) {

@@ -2,6 +2,7 @@
 
 ## Schema
 
+TODO : goal, challenge 해당 이름만 가져오는 api 구현
 monthly goal
 
 ```

@@ -3,6 +3,7 @@ import axios from "axios";
 import MonthSelector from "./MonthSelector.js";
 import MonthViewer from "./MonthViewer.js";
 import MonthController from "./MonthController.js";
+import Week from "./Week.js";
 
 const username = "bob";
 
@@ -54,6 +55,7 @@ function Month(props) {
         mode={mode}
         onGetGoalDatas={getGoalDatas}
       ></MonthController>
+      <Week presentMonth={presentMonth}></Week>
     </div>
   );
 }
