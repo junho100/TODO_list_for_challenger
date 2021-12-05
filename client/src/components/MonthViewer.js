@@ -32,7 +32,7 @@ function MonthViewer({ presentMonth, onGetGoalByMonth, goalDatas }) {
   useEffect(() => {
     if (presentMonth) {
       fetchMonthData(presentMonth);
-    } // TODO : update submit 후 바로 리랜더링 구현!
+    }
   }, [presentMonth, goalDatas]);
   if (monthData.id) {
     const idx = parseInt(monthData.targetMonth.slice(4, 6));

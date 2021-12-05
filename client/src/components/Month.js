@@ -11,6 +11,7 @@ function Month(props) {
   const [goalDatas, setGoalDatas] = useState([]);
   const [targetMonths, setTargetMonths] = useState([]);
   const [presentMonth, setPresentMonth] = useState();
+  const [isUpdate, setIsUpdate] = useState(false);
 
   const getGoalDatas = async () => {
     const { data: data } = await axios.get(
@@ -29,6 +30,9 @@ function Month(props) {
 
   useEffect(() => {
     getGoalDatas();
+    if (isUpdate === true) {
+      setIsUpdate(false);
+    }
   }, []);
 
   return (
@@ -40,10 +44,12 @@ function Month(props) {
       ></MonthSelector>
       <MonthViewer
         presentMonth={presentMonth}
+        onGetGoalDatas={getGoalDatas}
         onGetGoalByMonth={getGoalByMonth}
         goalDatas={goalDatas}
       ></MonthViewer>
       <MonthController
+        onSetIsUpdate={setIsUpdate}
         presentMonth={presentMonth}
         mode={mode}
         onGetGoalDatas={getGoalDatas}
