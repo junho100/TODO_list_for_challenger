@@ -8,11 +8,10 @@ import Week from "./Week.js";
 const username = "bob";
 
 function Month(props) {
-  const [mode, setMode] = useState(1); // 0:C, 1:R, 2:U, 3:D
+  const [mode, setMode] = useState(4); // 0:C, 1:R, 2:U, 3:D, 4:Default
   const [goalDatas, setGoalDatas] = useState([]);
   const [targetMonths, setTargetMonths] = useState([]);
   const [presentMonth, setPresentMonth] = useState();
-  const [isUpdate, setIsUpdate] = useState(false);
 
   const getGoalDatas = async () => {
     const { data: data } = await axios.get(
@@ -31,10 +30,7 @@ function Month(props) {
 
   useEffect(() => {
     getGoalDatas();
-    if (isUpdate === true) {
-      setIsUpdate(false);
-    }
-  }, []);
+  }, [mode]);
 
   return (
     <div>
@@ -48,14 +44,15 @@ function Month(props) {
         onGetGoalDatas={getGoalDatas}
         onGetGoalByMonth={getGoalByMonth}
         goalDatas={goalDatas}
+        mode={mode}
       ></MonthViewer>
       <MonthController
-        onSetIsUpdate={setIsUpdate}
         presentMonth={presentMonth}
         mode={mode}
         onGetGoalDatas={getGoalDatas}
+        onSetMode={setMode}
       ></MonthController>
-      <Week presentMonth={presentMonth}></Week>
+      <Week presentMonth={presentMonth} mode={mode}></Week>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import WeekViewer from "./WeekViewer.js";
 
 const username = "bob";
 //TODO : Month 바뀔때마다 challenge viewer 초기화 구현
-function Week({ presentMonth }) {
+function Week({ presentMonth, mode }) {
   const [targetWeeks, setTargetWeeks] = useState([]);
   const [presentWeek, setPresentWeek] = useState();
   const fetchWeeksData = () => {
@@ -24,6 +24,7 @@ function Week({ presentMonth }) {
   useEffect(() => {
     if (presentMonth !== undefined) {
       fetchWeeksData();
+      setPresentWeek(undefined);
     }
   }, [presentMonth]);
   return (
@@ -35,6 +36,7 @@ function Week({ presentMonth }) {
       <WeekViewer
         presentMonth={presentMonth}
         presentWeek={presentWeek}
+        mode={mode}
       ></WeekViewer>
     </div>
   );

@@ -16,7 +16,7 @@ const Months = [
   "December",
 ];
 
-function MonthViewer({ presentMonth, onGetGoalByMonth, goalDatas }) {
+function MonthViewer({ presentMonth, onGetGoalByMonth, goalDatas, mode }) {
   const [monthData, setMonthData] = useState({
     id: undefined,
     username: undefined,
@@ -34,18 +34,20 @@ function MonthViewer({ presentMonth, onGetGoalByMonth, goalDatas }) {
       fetchMonthData(presentMonth);
     }
   }, [presentMonth, goalDatas]);
-  if (monthData.id) {
-    const idx = parseInt(monthData.targetMonth.slice(4, 6));
-    const strMonth = monthData.targetMonth.slice(0, 4) + "  " + Months[idx];
-    return (
-      <ul>
-        <li>{monthData.username}</li>
-        <li>{strMonth}</li>
-        <li>{monthData.content}</li>
-        <li>{monthData.updatedAt}</li>
-        <li>{monthData.isDone === true ? "complete" : "not complete"}</li>
-      </ul>
-    );
+  if (mode !== 4) {
+    if (monthData.id) {
+      const idx = parseInt(monthData.targetMonth.slice(4, 6));
+      const strMonth = monthData.targetMonth.slice(0, 4) + "  " + Months[idx];
+      return (
+        <ul>
+          <li>{monthData.username}</li>
+          <li>{strMonth}</li>
+          <li>{monthData.content}</li>
+          <li>{monthData.updatedAt}</li>
+          <li>{monthData.isDone === true ? "complete" : "not complete"}</li>
+        </ul>
+      );
+    }
   }
   return <div>Choose Month!</div>;
 }

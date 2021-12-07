@@ -3,12 +3,7 @@ import axios from "axios";
 
 const username = "bob";
 
-function MonthController({
-  mode,
-  onGetGoalDatas,
-  onSetIsUpdate,
-  presentMonth,
-}) {
+function MonthController({ mode, onGetGoalDatas, presentMonth, onSetMode }) {
   if (mode === 0) {
     return (
       <form>
@@ -32,6 +27,7 @@ function MonthController({
               )
               .then(() => {
                 onGetGoalDatas();
+                onSetMode(4);
               });
           }}
         >
@@ -58,7 +54,7 @@ function MonthController({
                 }
               )
               .then(() => {
-                onSetIsUpdate(true);
+                onSetMode(4);
               });
           }}
         >
@@ -68,9 +64,11 @@ function MonthController({
     );
   } else if (mode === 3) {
     const targetMonth = presentMonth;
-    axios.delete(
-      `http://localhost:8080/goals/${targetMonth}?username=${username}`
-    );
+    axios
+      .delete(`http://localhost:8080/goals/${targetMonth}?username=${username}`)
+      .then(() => {
+        onSetMode(4);
+      });
   }
   return <div></div>;
 }

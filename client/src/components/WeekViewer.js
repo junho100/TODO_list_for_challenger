@@ -3,7 +3,7 @@ import axios from "axios";
 
 const username = "bob";
 
-function WeekViewer({ presentMonth, presentWeek }) {
+function WeekViewer({ presentMonth, presentWeek, mode }) {
   const [presentWeekData, setPresentWeekData] = useState({
     id: undefined,
     username: undefined,
@@ -28,7 +28,7 @@ function WeekViewer({ presentMonth, presentWeek }) {
     if (presentWeek !== undefined) {
       fetchWeekData();
     }
-  }, [presentWeek, presentMonth]);
+  }, [presentWeek, presentMonth, mode]);
   if (presentWeek !== undefined) {
     return (
       <div>
