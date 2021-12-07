@@ -8,7 +8,7 @@ import Week from "./Week.js";
 const username = "bob";
 
 function Month(props) {
-  const [mode, setMode] = useState(4); // 0:C, 1:R, 2:U, 3:D, 4:Default
+  const [mode, setMode] = useState(4); // 0:C, 1:R, 2:U, 3:D, 4:Default, 5:toggle
   const [goalDatas, setGoalDatas] = useState([]);
   const [targetMonths, setTargetMonths] = useState([]);
   const [presentMonth, setPresentMonth] = useState();

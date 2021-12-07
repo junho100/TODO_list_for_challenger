@@ -4,7 +4,6 @@ import WeekSelector from "./WeekSelector.js";
 import WeekViewer from "./WeekViewer.js";
 
 const username = "bob";
-//TODO : Month 바뀔때마다 challenge viewer 초기화 구현
 function Week({ presentMonth, mode }) {
   const [targetWeeks, setTargetWeeks] = useState([]);
   const [presentWeek, setPresentWeek] = useState();

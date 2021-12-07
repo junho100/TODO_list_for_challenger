@@ -69,6 +69,13 @@ function MonthController({ mode, onGetGoalDatas, presentMonth, onSetMode }) {
       .then(() => {
         onSetMode(4);
       });
+  } else if (mode === 5) {
+    const targetMonth = presentMonth;
+    axios
+      .put(`http://localhost:8080/goals/${targetMonth}?username=${username}`)
+      .then(() => {
+        onSetMode(4);
+      });
   }
   return <div></div>;
 }

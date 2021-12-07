@@ -31,6 +31,14 @@ function MonthSelector({ targetMonths, onSetPresentMonth, onSetMode }) {
             >
               Delete
             </button>
+            <button
+              key="toggle"
+              onClick={() => {
+                onSetMode(5);
+              }}
+            >
+              V
+            </button>
           </div>
         );
       })}
