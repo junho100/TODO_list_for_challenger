@@ -53,12 +53,13 @@
 - [ ] auth api documentation
 - [ ] postman setup for auth
 - [ ] auth 구현
-- [ ] DB MySQL로 전환 (using Sequelize)
+- [ ] DB MySQL로 전환 (using Sequelize) (진행중)
+  - [ ] MySQL로만 db 연결해보기 (진행중)
+  - [ ] using Sequelize
 - [ ] 간단한 프론트엔드 구현, 연결
-  - [ ] goal, challenge 구현 후 (진행중)
+  - [x] goal, challenge 구현 후
     - [x] goal 구현
-    - [ ] challenge 구현 (진행중)
-    - [ ] 반응형 구현
+    - [x] challenge 구현
   - [ ] validation 구현 후
   - [ ] auth 구현 후
 - [ ] api 문서화, github 연동 (using Swagger)
