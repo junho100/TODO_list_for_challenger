@@ -7,55 +7,6 @@
     targetWeek : string,
     isDone : boolean // 완료 여부
 }*/
-let idx = 4;
-
-let challenges = [
-  {
-    id: "0",
-    username: "bob",
-    content: "express 공식문서 1회독",
-    updatedAt: new Date().toString(),
-    targetMonth: "202111",
-    targetWeek: "1",
-    isDone: false,
-  },
-  {
-    id: "1",
-    username: "bob",
-    content: "express 공식문서 2회독",
-    updatedAt: new Date().toString(),
-    targetMonth: "202111",
-    targetWeek: "2",
-    isDone: false,
-  },
-  {
-    id: "2",
-    username: "bob",
-    content: "express 공식문서 3회독",
-    updatedAt: new Date().toString(),
-    targetMonth: "202112",
-    targetWeek: "1",
-    isDone: false,
-  },
-  {
-    id: "3",
-    username: "bob",
-    content: "express 공식문서 4회독",
-    updatedAt: new Date().toString(),
-    targetMonth: "202112",
-    targetWeek: "2",
-    isDone: false,
-  },
-  {
-    id: "4",
-    username: "bob",
-    content: "express 공식문서 5회독",
-    updatedAt: new Date().toString(),
-    targetMonth: "202111",
-    targetWeek: "3",
-    isDone: false,
-  },
-];
 
 export async function getByUsername(username) {
   return challenges.filter((challenge) => challenge.username === username);

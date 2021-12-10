@@ -2,7 +2,6 @@ import express from "express";
 import "express-async-errors";
 import cors from "cors";
 import morgan from "morgan";
-import mysql from "mysql";
 import config from "./config.js";
 import goalRouter from "./router/goals.js";
 import challengeRouter from "./router/challenges.js";
@@ -23,13 +22,6 @@ app.use((req, res, next) => {
 app.use((error, req, res, next) => {
   console.log(error);
   res.status(500).send("Something went wrong!");
-});
-
-const pool = mysql.createPool({
-  host: config.db.host,
-  user: config.db.user,
-  password: config.db.password,
-  database: config.db.database,
 });
 
 app.listen(config.server.port);
