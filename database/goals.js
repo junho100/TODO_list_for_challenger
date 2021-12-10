@@ -1,13 +1,19 @@
 import pool from "../db/database.js";
 
 export async function getByUsername(username) {
-  return goals.filter((goal) => goal.username === username);
+  const result = await pool.execute(`SELECT * FROM goals WHERE username=?`, [
+    username,
+  ]);
+  return result[0];
 }
 
 export async function getBytargetMonth(username, targetMonth) {
-  return goals.find(
-    (goal) => goal.targetMonth === targetMonth && goal.username === username
+  const result = await pool.execute(
+    `SELECT * FROM goals WHERE username=? AND targetMonth=?`,
+    [username, targetMonth]
   );
+
+  return result[0];
 }
 
 export async function create(content, targetMonth, username) {
