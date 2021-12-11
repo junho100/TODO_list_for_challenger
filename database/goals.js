@@ -17,37 +17,35 @@ export async function getBytargetMonth(username, targetMonth) {
 }
 
 export async function create(content, targetMonth, username) {
-  const goal = {
-    id: String(idx),
-    username,
-    content,
-    updatedAt: new Date().toString(),
-    targetMonth,
-    isDone: false,
-  };
-  idx++;
-  goals = [goal, ...goals];
-  return goal;
-}
-
-export async function updateContent(content, targetMonth, username) {
-  const goal = await getBytargetMonth(username, targetMonth);
-  goal.content = content;
-  return goal;
-}
-
-export async function remove(username, targetMonth) {
-  goals = goals.filter(
-    (goal) => goal.username !== username || goal.targetMonth !== targetMonth
+  await pool.execute(
+    `INSERT INTO goals (username, content, targetMonth, isDone) VALUES ( ?, ?, ?, ?)`,
+    [username, content, targetMonth, false]
   );
 }
 
+export async function updateContent(content, targetMonth, username) {
+  await pool.execute(
+    `UPDATE goals
+    SET content = ? 
+    WHERE targetMonth=? AND username=?`,
+    [content, targetMonth, username]
+  );
+}
+
+export async function remove(username, targetMonth) {
+  await pool.execute(`DELETE FROM goals WHERE username=? AND targetMonth=?`, [
+    username,
+    targetMonth,
+  ]);
+}
+
 export async function toggleDone(username, targetMonth) {
-  const goal = await getBytargetMonth(username, targetMonth);
-  if (goal.isDone === true) {
-    goal.isDone = false;
-  } else {
-    goal.isDone = true;
-  }
-  return goal;
+  await pool.execute(
+    `UPDATE goals
+    SET isDone = CASE 
+    WHEN isDone=0 AND username=? AND targetMonth=? THEN 1 
+    WHEN isDone=1 AND username=? AND targetMonth=? THEN 0 
+    END`,
+    [username, targetMonth, username, targetMonth]
+  );
 }
