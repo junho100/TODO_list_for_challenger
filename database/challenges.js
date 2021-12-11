@@ -1,72 +1,61 @@
-/*{
-    id : string,
-    username : string,
-    content : string, // 해당 주 목표 내용
-    updateAt : datetime,
-    targetMonth : string,
-    targetWeek : string,
-    isDone : boolean // 완료 여부
-}*/
+import pool from "../db/database.js";
 
 export async function getByUsername(username) {
-  return challenges.filter((challenge) => challenge.username === username);
+  const result = await pool.execute(
+    `SELECT * FROM challenges WHERE username=?`,
+    [username]
+  );
+  return result[0];
+  // return challenges.filter((challenge) => challenge.username === username);
 }
 
 export async function getByTargetMonth(username, targetMonth) {
-  return challenges.filter(
-    (challenge) =>
-      challenge.username === username && challenge.targetMonth === targetMonth
+  const result = await pool.execute(
+    `SELECT * FROM challenges WHERE username=? AND targetMonth=?`,
+    [username, targetMonth]
   );
+  return result[0];
 }
 
 export async function getByTargetWeek(username, targetMonth, targetWeek) {
-  return challenges.find(
-    (challenge) =>
-      challenge.username === username &&
-      challenge.targetMonth === targetMonth &&
-      challenge.targetWeek === targetWeek
+  const result = await pool.execute(
+    `SELECT * FROM challenges WHERE username=? AND targetMonth=? AND targetWeek=?`,
+    [username, targetMonth, targetWeek]
   );
+  return result[0];
 }
 
 export async function create(username, content, targetMonth, targetWeek) {
-  const challenge = {
-    id: String(idx),
-    username,
-    content,
-    updatedAt: new Date().toString(),
-    targetMonth,
-    targetWeek,
-    isDone: false,
-  };
-  idx++;
-  challenges.push(challenge);
-  return challenge;
+  await pool.execute(
+    `INSERT INTO challenges (username, content, targetMonth, targetWeek, isDone) VALUES (?, ?, ?, ?, ?)`,
+    [username, content, targetMonth, targetWeek, false]
+  );
 }
 
 export async function update(username, targetMonth, targetWeek, content) {
-  const challenge = await getByTargetWeek(username, targetMonth, targetWeek);
-  if (challenge) {
-    challenge.content = content;
-    return challenge;
-  }
-  return undefined;
+  await pool.execute(
+    `UPDATE challenges
+    SET content = ? 
+    WHERE targetMonth=? AND username=? AND targetWeek=?`,
+    [content, targetMonth, username, targetWeek]
+  );
 }
 
 export async function remove(username, targetMonth, targetWeek) {
-  const target = await getByTargetWeek(username, targetMonth, targetWeek);
-  const newChallenge = challenges.filter((challenge) => challenge !== target);
-  challenges = newChallenge;
+  await pool.execute(
+    `DELETE FROM challenges WHERE username=? AND targetMonth=? AND targetWeek=?`,
+    [username, targetMonth, targetWeek]
+  );
 }
 
+//frontend 단에서 fetch로 구현을 할까?
 export async function toggleDone(username, targetMonth, targetWeek) {
-  const challenge = await getByTargetWeek(username, targetMonth, targetWeek);
-  if (challenge) {
-    if (challenge.isDone) {
-      challenge.isDone = false;
-    } else {
-      challenge.isDone = true;
-    }
-    return challenge;
-  }
-  return undefined;
+  await pool.execute(
+    `UPDATE challenges
+    SET isDone = CASE 
+    WHEN isDone=0 AND username=? AND targetMonth=? AND targetWeek=? THEN 1 
+    WHEN isDone=1 AND username=? AND targetMonth=? AND targetWeek=? THEN 0 
+    END`,
+    [username, targetMonth, targetWeek, username, targetMonth, targetWeek]
+  );
 }
