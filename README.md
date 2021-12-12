@@ -1,7 +1,7 @@
 # TODO list API for challenger
 
 백엔드 개인 프로젝트 "TODO list for challenger"<br>
-매달 큰 목표를 세운 후, 한주마다 첼린지를 스스로 설정해 목표를 이루어 나가는 투두 앱 API 구현 프로젝트
+매달 큰 목표를 세운 후, 한주마다 첼린지를 스스로 설정해 목표를 이루어 나가는 기능을 가진 투두 앱 API 구현 프로젝트
 
 ## Tech Stack I Used
 
@@ -50,11 +50,13 @@
   - [x] controller, router 분리
 - [ ] validation 구현
 - [ ] goal, challenge 추가 예외처리 확인, 구현
-- [ ] auth api documentation
-- [ ] postman setup for auth
-- [ ] auth 구현
-- [ ] DB MySQL로 전환 (using Sequelize) (진행중)
-  - [ ] MySQL로만 db 연결해보기 (진행중)
+- [ ] api documentation 분리
+- [x] auth api documentation
+- [x] postman setup for auth
+- [ ] auth 구현 (진행중)
+  - [ ] db setting(schema, ect...)
+- [ ] DB MySQL로 전환 (using Sequelize)
+  - [x] MySQL로만 db 연결해보기
   - [ ] using Sequelize
 - [ ] 간단한 프론트엔드 구현, 연결
   - [x] goal, challenge 구현 후
