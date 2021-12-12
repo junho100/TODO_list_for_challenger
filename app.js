@@ -5,6 +5,7 @@ import morgan from "morgan";
 import config from "./config.js";
 import goalRouter from "./router/goals.js";
 import challengeRouter from "./router/challenges.js";
+import authRouter from "./router/auth.js";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(morgan("tiny"));
 
 app.use("/goals", goalRouter);
 app.use("/challs", challengeRouter);
+app.use("/auth", authRouter);
 
 app.use((req, res, next) => {
   res.status(404).send("NOT FOUND");

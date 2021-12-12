@@ -1,4 +1,4 @@
-import pool from "../db/database.js";
+import pool from "./database.js";
 
 export async function getByUsername(username) {
   const result = await pool.execute(
