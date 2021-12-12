@@ -48,7 +48,6 @@ export async function remove(username, targetMonth, targetWeek) {
   );
 }
 
-//frontend 단에서 fetch로 구현을 할까?
 export async function toggleDone(username, targetMonth, targetWeek) {
   await pool.execute(
     `UPDATE challenges
