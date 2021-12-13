@@ -13,6 +13,9 @@ const config = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
   },
+  auth: {
+    saltRounds: process.env.SALT_ROUNDS,
+  },
 };
 
 export default config;

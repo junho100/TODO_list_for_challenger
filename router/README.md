@@ -213,9 +213,32 @@ response 204
 
 ```
 {
-    username : string // ID 겸 username
+    username : string // ID 겸 이름
     password : string,
     name : string
+}
+```
+
+## POST /auth/signup
+
+signup user <br>
+
+request
+
+```
+{
+    username,
+    password,
+    name
+}
+```
+
+response 201
+
+```
+{
+    token,
+    username
 }
 ```
 
