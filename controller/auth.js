@@ -1,5 +1,6 @@
 import * as userRepository from "../database/users.js";
-import bcrypt, { hash } from "bcrypt";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import config from "../config.js";
 
 export async function signup(req, res, next) {
@@ -16,12 +17,31 @@ export async function signup(req, res, next) {
 
 export async function login(req, res, next) {
   const { username, password } = req.body;
+  const secKey = config.auth.secKey;
   const user = await userRepository.getByUsername(username);
   const result = await bcrypt.compare(password, user.password);
-  if (result) {
-    return res.status(201).send("login success");
+  if (!result) {
+    res.send("login error");
   }
-  return res.send("login error");
+  return jwt.sign(
+    {
+      username,
+    },
+    secKey,
+    {
+      expiresIn: 1000 * 60 * 5,
+    },
+    (err, token) => {
+      if (!err) {
+        return res.status(201).json({
+          token,
+          username,
+        });
+      }
+      console.log(err);
+      return res.send("jwt sign error");
+    }
+  );
 }
 
 export function logout(req, res, next) {
