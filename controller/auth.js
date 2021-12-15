@@ -6,13 +6,31 @@ import config from "../config.js";
 export async function signup(req, res, next) {
   const { username, password, name } = req.body;
   const saltRounds = parseInt(config.auth.saltRounds);
+  const secKey = config.auth.secKey;
   const hashed = await bcrypt.hash(password, saltRounds);
   const result = await userRepository.create(username, hashed, name);
-  console.log(result);
-  if (result) {
-    return res.status(201).send("created");
+  if (!result) {
+    return res.send("signup error");
   }
-  return res.send("signup error");
+  return jwt.sign(
+    {
+      username,
+    },
+    secKey,
+    {
+      expiresIn: 1000 * 10,
+    },
+    (err, token) => {
+      if (!err) {
+        return res.status(201).json({
+          token,
+          username,
+        });
+      }
+      console.log(err);
+      return res.send("jwt sign error");
+    }
+  );
 }
 
 export async function login(req, res, next) {
@@ -29,7 +47,7 @@ export async function login(req, res, next) {
     },
     secKey,
     {
-      expiresIn: 1000 * 60 * 5,
+      expiresIn: 1000 * 10,
     },
     (err, token) => {
       if (!err) {
