@@ -54,7 +54,8 @@
 - [x] auth api documentation
 - [x] postman setup for auth
 - [ ] auth 구현 (진행중)
-  - [ ] db setting(schema, ect...)
+  - [x] db setting(schema, ect...)
+  - [ ] jwt based login 구현 (진행중)
 - [ ] DB MySQL로 전환 (using Sequelize)
   - [x] MySQL로만 db 연결해보기
   - [ ] using Sequelize

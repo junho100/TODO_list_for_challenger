@@ -67,5 +67,6 @@ export function logout(req, res, next) {
 }
 
 export function me(req, res, next) {
+  // token 유효성 검사!
   return;
 }
