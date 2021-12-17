@@ -16,6 +16,7 @@ const config = {
   auth: {
     saltRounds: process.env.SALT_ROUNDS,
     secKey: process.env.SEC_KEY,
+    expDay: process.env.EXP_DAY,
   },
 };
 

@@ -47,7 +47,7 @@ export async function login(req, res, next) {
     },
     secKey,
     {
-      expiresIn: 1000 * 10,
+      expiresIn: config.auth.expDay,
     },
     (err, token) => {
       if (!err) {
@@ -67,6 +67,12 @@ export function logout(req, res, next) {
 }
 
 export function me(req, res, next) {
-  // token 유효성 검사!
-  return;
+  const username = req.username;
+
+  const user = userRepository.getByUsername(username);
+
+  if (!user) {
+    return res.sendStatus(404);
+  }
+  return res.status(200).send(username);
 }

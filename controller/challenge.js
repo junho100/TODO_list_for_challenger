@@ -77,16 +77,8 @@ export async function updateChallenge(req, res, next) {
     );
     return res.status(200).json(challenge);
   }
-  const challenge = await challengeRepositoy.update(
-    username,
-    targetMonth,
-    targetWeek,
-    content
-  );
-  if (challenge) {
-    return res.status(200).json(challenge);
-  }
-  return res.status(404).send("Not Found");
+  await challengeRepositoy.update(username, targetMonth, targetWeek, content);
+  return res.sendStatus(200);
 }
 
 export async function removeChalleng(req, res, next) {
