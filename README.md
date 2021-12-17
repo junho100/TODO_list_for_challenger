@@ -24,8 +24,6 @@
 
 ## Discussion & Obstacles
 
-### React useEffect 속 무한리랜더링(setState)
-
 ### GET 요청에 request body 추가
 
 ## TODO
@@ -53,9 +51,10 @@
 - [ ] api documentation 분리
 - [x] auth api documentation
 - [x] postman setup for auth
-- [ ] auth 구현 (진행중)
+- [x] auth 구현
   - [x] db setting(schema, ect...)
-  - [ ] jwt based login 구현 (진행중)
+  - [x] jwt based login 구현
+  - [ ] auth 권한 부여
 - [ ] DB MySQL로 전환 (using Sequelize)
   - [x] MySQL로만 db 연결해보기
   - [ ] using Sequelize
@@ -68,3 +67,4 @@
 - [ ] api 문서화, github 연동 (using Swagger)
   - [ ] api 모듈화 -> 보기쉽게 작성
 - [ ] goals, challenge 중복 확인 구현
+- [ ] 마무리 프론트엔드 스타일링
