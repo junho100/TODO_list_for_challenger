@@ -16,6 +16,25 @@ monthly goal
 }
 ```
 
+/_
+goal
+content -> not empty
+targetMonth : length 6
+_/
+
+/_
+auth
+username -> length min 1 max 10
+name -> first word -> uppercase
+_/
+
+/_
+challenge
+content -> not empty
+targetMonth -> length 6
+targetWeek -> value min 1 max 5, lenght 1
+_/
+
 weekly challenge
 
 ```
