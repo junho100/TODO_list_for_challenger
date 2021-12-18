@@ -50,10 +50,10 @@
 - [ ] api documentation 분리
 - [x] auth api documentation
 - [x] postman setup for auth
-- [ ] auth 구현 (진행중)
+- [x] auth 구현
   - [x] db setting(schema, ect...)
   - [x] jwt based login 구현
-  - [ ] auth 권한 부여 (진행중)
+  - [x] auth 권한 부여
 - [ ] DB MySQL로 전환 (using Sequelize)
   - [x] MySQL로만 db 연결해보기
   - [ ] using Sequelize
