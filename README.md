@@ -46,8 +46,9 @@
   - [x] 기본 구현
   - [x] controller, router 분리
 - [ ] validation 구현 (진행중)
-  - [ ] goal
-  - [ ] challenge
+  - [ ] goal (진행중)
+  - [ ] challenge (진행중)
+  - [ ] auth (진행중)
 - [ ] goal, challenge 추가 예외처리 확인, 구현
 - [ ] api documentation 분리
 - [x] auth api documentation
