@@ -33,7 +33,6 @@
 - [x] 대략적인 서버 구조 설계(Route, Controller, Data)
 - [x] Monthly goal router 수정(GET 요청)
   - [x] postman 수정
-- [ ] goal, challenge 해당 이름만 가져오는 api 구현
 - [x] Weekly challenge router 수정(GET 요청)
   - [x] postman 수정
 - [x] 메모리 임시 DB 구현 (monthly goal)
@@ -51,10 +50,10 @@
 - [ ] api documentation 분리
 - [x] auth api documentation
 - [x] postman setup for auth
-- [x] auth 구현
+- [ ] auth 구현 (진행중)
   - [x] db setting(schema, ect...)
   - [x] jwt based login 구현
-  - [ ] auth 권한 부여
+  - [ ] auth 권한 부여 (진행중)
 - [ ] DB MySQL로 전환 (using Sequelize)
   - [x] MySQL로만 db 연결해보기
   - [ ] using Sequelize

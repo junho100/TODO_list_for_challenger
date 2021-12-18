@@ -1,7 +1,7 @@
 import * as goalRepository from "../database/goals.js";
 
 function checkAndGetUser(req) {
-  const username = req.query.username;
+  const username = req.username;
   if (!username) {
     return res.send(404).send("User not found");
   }
@@ -31,6 +31,7 @@ export async function createGoal(req, res, next) {
   const username = checkAndGetUser(req);
   const targetMonth = req.params.targetMonth;
   const content = req.body.content;
+
   const goal = await goalRepository.create(content, targetMonth, username);
   return res.status(201).json(goal);
 }

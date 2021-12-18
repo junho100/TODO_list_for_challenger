@@ -1,7 +1,7 @@
 import * as challengeRepositoy from "../database/challenges.js";
 
 function checkAndGetUser(req) {
-  const username = req.query.username;
+  const username = req.username;
   if (!username) {
     return res.send(404).send("User not found");
   }

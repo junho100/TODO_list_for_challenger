@@ -32,7 +32,7 @@ weekly challenge
 
 ---
 
-## GET /goals?username=:username
+## GET /goals
 
 get my goals <br>
 response 200
@@ -43,7 +43,7 @@ response 200
 }
 ```
 
-## GET /goals/:targetMonth?username=:username
+## GET /goals/:targetMonth
 
 get my goals in specific month <br>
 
@@ -55,7 +55,7 @@ response 200
 }
 ```
 
-## POST /goals/:targetMonth?username=:username
+## POST /goals/:targetMonth
 
 create goal <br>
 request
@@ -74,7 +74,7 @@ response 201
 }
 ```
 
-## PUT /goals/:targetMonth?username=:username
+## PUT /goals/:targetMonth
 
 update goal <br>
 request
@@ -93,7 +93,7 @@ response 200
 }
 ```
 
-## PUT /goals/targetMonth?username=:username
+## PUT /goals/targetMonth
 
 update complete or not
 
@@ -105,7 +105,7 @@ response 200
 }
 ```
 
-## DELETE /goals/:targetMonth?username=:username
+## DELETE /goals/:targetMonth
 
 delete goal <br>
 
@@ -113,7 +113,7 @@ response 204
 
 ---
 
-## GET /challs?username=:username
+## GET /challs
 
 get my challenges
 
@@ -125,7 +125,7 @@ response 200
 }
 ```
 
-## GET /challs/:targetMonth?username=:username
+## GET /challs/:targetMonth
 
 get my challenges in specific month
 
@@ -137,7 +137,7 @@ response 200
 }
 ```
 
-## GET /challs/:targetMonth/:targetWeek?username=:username
+## GET /challs/:targetMonth/:targetWeek
 
 get my challenge in specific month, week
 
@@ -149,7 +149,7 @@ response 200
 }
 ```
 
-## POST /challs/:targetMonth/:targetWeek?username=:username
+## POST /challs/:targetMonth/:targetWeek
 
 create challenge <br>
 request
@@ -168,7 +168,7 @@ response 201
 }
 ```
 
-## PUT /challs/:targetMonth/:targetWeek?username=:username
+## PUT /challs/:targetMonth/:targetWeek
 
 update challenge <br>
 request
@@ -187,7 +187,7 @@ response 200
 }
 ```
 
-## PUT /challs/:targetMonth/:targetWeek?username=:username
+## PUT /challs/:targetMonth/:targetWeek
 
 update complete or not
 
@@ -199,7 +199,7 @@ response 200
 }
 ```
 
-## DELETE /challs/:targetMonth/:targetWeek?username=:username
+## DELETE /challs/:targetMonth/:targetWeek
 
 delete challenge <br>
 

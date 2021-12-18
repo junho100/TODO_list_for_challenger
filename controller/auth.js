@@ -62,10 +62,6 @@ export async function login(req, res, next) {
   );
 }
 
-export function logout(req, res, next) {
-  return;
-}
-
 export function me(req, res, next) {
   const username = req.username;
 
