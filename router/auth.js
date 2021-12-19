@@ -6,7 +6,7 @@ import { authValidator } from "../middleware/validator.js";
 const router = Router("/auth");
 
 router.post("/signup", authValidator, authController.signup);
-router.post("/login", authValidator, authController.login, isAuth);
+router.post("/login", authController.login);
 router.get("/me", isAuth, authController.me);
 
 export default router;

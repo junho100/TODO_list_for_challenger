@@ -1,5 +1,24 @@
 import { param, body, validationResult } from "express-validator";
 
+/*
+goal
+content -> not empty
+targetMonth : length 6
+*/
+
+/*
+auth
+username -> length min 1 max 10
+name -> first word -> uppercase
+*/
+
+/*
+challenge
+content -> not empty
+targetMonth -> length 6
+targetWeek -> value min 1 max 5, lenght 1
+*/
+
 export const authValidator = [
   body("username")
     .trim()
@@ -8,27 +27,11 @@ export const authValidator = [
     .isLength({ min: 1, max: 10 })
     .withMessage("1 <= username length <= 10"),
   body("password").trim().notEmpty().withMessage("necessary"),
-  body("name")
-    .trim()
-    .notEmpty()
-    .withMessage("necessary")
-    .custom((value) => {
-      for (let i = 0; i < value.length; i++) {
-        if (i == 0) {
-          if (value[i] !== value[i].toUpperCase()) {
-            value[i] = value[i].toUpperCase();
-          }
-        }
-        if (value[i] !== value[i].toLowerCase()) {
-          value[i] = value[i].toLowerCase();
-        }
-      }
-      return value;
-    }),
+  body("name").trim().notEmpty().withMessage("necessary"),
   (req, res, next) => {
     const err = validationResult(req);
     if (!err.isEmpty()) {
-      return res.sendStatus(400).json({ message: err.array()[0].msg });
+      return res.status(400).json({ message: err.array()[0].msg });
     }
     next();
   },
@@ -45,7 +48,7 @@ export const goalValidator = [
   (req, res, next) => {
     const err = validationResult(req);
     if (!err.isEmpty()) {
-      return res.sendStatus(400).json({ message: err.array()[0].msg });
+      return res.status(400).json({ message: err.array()[0].msg });
     }
     next();
   },
@@ -53,13 +56,13 @@ export const goalValidator = [
 
 export const challengeValidator = [
   body("content").trim().notEmpty().withMessage("necessary"),
-  body("targetMonth")
+  param("targetMonth")
     .trim()
     .notEmpty()
     .withMessage("necessary")
     .isLength({ max: 6, min: 6 })
     .withMessage("length should be 6"),
-  body("targetWeek")
+  param("targetWeek")
     .trim()
     .notEmpty()
     .withMessage("necessary")
@@ -70,7 +73,7 @@ export const challengeValidator = [
   (req, res, next) => {
     const err = validationResult(req);
     if (!err.isEmpty()) {
-      return res.sendStatus(400).json({ message: err.array()[0].msg });
+      return res.status(400).json({ message: err.array()[0].msg });
     }
     next();
   },

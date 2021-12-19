@@ -8,7 +8,7 @@ export function isAuth(req, res, next) {
   }
 
   const token = tokenHeader.split(" ")[1];
-  jwt.verify(token, config.auth.secKey, (err, decoded) => {
+  return jwt.verify(token, config.auth.secKey, (err, decoded) => {
     if (err) {
       console.log(err);
       res.status(401).send(err);
