@@ -1,24 +1,5 @@
 import { param, body, validationResult } from "express-validator";
 
-/*
-goal
-content -> not empty
-targetMonth : length 6
-*/
-
-/*
-auth
-username -> length min 1 max 10
-name -> first word -> uppercase
-*/
-
-/*
-challenge
-content -> not empty
-targetMonth -> length 6
-targetWeek -> value min 1 max 5, lenght 1
-*/
-
 export const authValidator = [
   body("username")
     .trim()
