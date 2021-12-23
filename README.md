@@ -49,7 +49,7 @@
   - [x] goal
   - [x] challenge
   - [x] auth
-- [ ] goal, challenge 추가 예외처리 확인, 구현
+- [ ] goal, challenge 추가 예외처리 확인, 구현 (진행중)
 - [ ] api documentation 분리
 - [x] auth api documentation
 - [x] postman setup for auth
