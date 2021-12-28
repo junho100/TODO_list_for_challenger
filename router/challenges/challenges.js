@@ -1,7 +1,7 @@
 import { Router } from "express";
-import * as challengeController from "../controller/challenge.js";
-import { isAuth } from "../middleware/auth.js";
-import { challengeValidator } from "../middleware/validator.js";
+import * as challengeController from "../../controller/challenge.js";
+import { isAuth } from "../../middleware/auth.js";
+import { challengeValidator } from "../../middleware/validator.js";
 
 const router = Router("/challs");
 

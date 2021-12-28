@@ -1,7 +1,7 @@
 import { Router } from "express";
-import * as goalController from "../controller/goal.js";
-import { isAuth } from "../middleware/auth.js";
-import { goalValidator } from "../middleware/validator.js";
+import * as goalController from "../../controller/goal.js";
+import { isAuth } from "../../middleware/auth.js";
+import { goalValidator } from "../../middleware/validator.js";
 
 const router = Router("/goals");
 
