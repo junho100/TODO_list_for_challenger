@@ -65,7 +65,7 @@
     - [x] goal 구현
     - [x] challenge 구현
   - [ ] validation 구현 후
-  - [ ] auth 구현 후
+  - [ ] auth 구현 후 (진행중)
 - [ ] api 문서화, github 연동 (using Swagger)
   - [ ] api 모듈화 -> 보기쉽게 작성
 - [ ] goals, challenge 중복 확인 구현
