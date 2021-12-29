@@ -55,12 +55,6 @@ response 201
 }
 ```
 
-## POST /auth/logout
-
-logout user <br>
-
-response 201
-
 ## GET /auth/me
 
 check authentication
@@ -69,7 +63,6 @@ response 200
 
 ```
 {
-    token,
     username
 }
 ```

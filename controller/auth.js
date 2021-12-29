@@ -5,20 +5,20 @@ import config from "../config.js";
 
 export async function signup(req, res, next) {
   const { username, password, name } = req.body;
-  const saltRounds = parseInt(config.auth.saltRounds);
-  const secKey = config.auth.secKey;
-  const hashed = await bcrypt.hash(password, saltRounds);
-  const result = await userRepository.create(username, hashed, name);
-  if (!result) {
-    return res.send("signup error");
+  const user = await userRepository.getByUsername(username);
+  if (user) {
+    return res.status(400).send("user already exists");
   }
+  const saltRounds = parseInt(config.auth.saltRounds);
+  const hashed = await bcrypt.hash(password, saltRounds);
+  await userRepository.create(username, hashed, name);
   return jwt.sign(
     {
       username,
     },
-    secKey,
+    config.auth.secKey,
     {
-      expiresIn: 1000 * 10,
+      expiresIn: config.auth.expDay,
     },
     (err, token) => {
       if (!err) {
@@ -37,15 +37,18 @@ export async function login(req, res, next) {
   const { username, password } = req.body;
   const secKey = config.auth.secKey;
   const user = await userRepository.getByUsername(username);
+  if (!user) {
+    return res.status(400).send("login error");
+  }
   const result = await bcrypt.compare(password, user.password);
   if (!result) {
-    res.send("login error");
+    return res.send("login error");
   }
   return jwt.sign(
     {
       username,
     },
-    secKey,
+    config.auth.secKey,
     {
       expiresIn: config.auth.expDay,
     },
@@ -62,10 +65,10 @@ export async function login(req, res, next) {
   );
 }
 
-export function me(req, res, next) {
+export async function me(req, res, next) {
   const username = req.username;
 
-  const user = userRepository.getByUsername(username);
+  const user = await userRepository.getByUsername(username);
 
   if (!user) {
     return res.sendStatus(404);

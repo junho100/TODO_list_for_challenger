@@ -13,7 +13,6 @@ export function isAuth(req, res, next) {
       console.log(err);
       res.status(401).send(err);
     }
-
     req.username = decoded.username;
     next();
   });

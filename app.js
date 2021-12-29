@@ -3,9 +3,9 @@ import "express-async-errors";
 import cors from "cors";
 import morgan from "morgan";
 import config from "./config.js";
-import goalRouter from "./router/goals.js";
-import challengeRouter from "./router/challenges.js";
-import authRouter from "./router/auth.js";
+import goalRouter from "./router/goals/goals.js";
+import challengeRouter from "./router/challenges/challenges.js";
+import authRouter from "./router/auth/auth.js";
 
 const app = express();
 
