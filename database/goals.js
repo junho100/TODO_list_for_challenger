@@ -13,7 +13,7 @@ export async function getBytargetMonth(username, targetMonth) {
     [username, targetMonth]
   );
 
-  return result[0];
+  return result[0][0];
 }
 
 export async function create(content, targetMonth, username) {
