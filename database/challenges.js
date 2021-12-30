@@ -6,7 +6,6 @@ export async function getByUsername(username) {
     [username]
   );
   return result[0];
-  // return challenges.filter((challenge) => challenge.username === username);
 }
 
 export async function getByTargetMonth(username, targetMonth) {
@@ -22,7 +21,7 @@ export async function getByTargetWeek(username, targetMonth, targetWeek) {
     `SELECT * FROM challenges WHERE username=? AND targetMonth=? AND targetWeek=?`,
     [username, targetMonth, targetWeek]
   );
-  return result[0];
+  return result[0][0];
 }
 
 export async function create(username, content, targetMonth, targetWeek) {
@@ -52,9 +51,10 @@ export async function toggleDone(username, targetMonth, targetWeek) {
   await pool.execute(
     `UPDATE challenges
     SET isDone = CASE 
-    WHEN isDone=0 AND username=? AND targetMonth=? AND targetWeek=? THEN 1 
-    WHEN isDone=1 AND username=? AND targetMonth=? AND targetWeek=? THEN 0 
-    END`,
-    [username, targetMonth, targetWeek, username, targetMonth, targetWeek]
+    WHEN isDone=0 THEN 1 
+    ELSE 0
+    END
+    WHERE targetMonth=? AND username=? AND targetWeek=?`,
+    [targetMonth, username, targetWeek]
   );
 }

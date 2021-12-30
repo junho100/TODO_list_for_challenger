@@ -31,7 +31,7 @@ router.put(
 router.delete(
   "/:targetMonth/:targetWeek",
   isAuth,
-  challengeController.removeChalleng
+  challengeController.removeChallenge
 );
 
 export default router;
