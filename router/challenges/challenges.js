@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as challengeController from "../../controller/challenge.js";
 import { isAuth } from "../../middleware/auth.js";
-import { challengeValidator } from "../../middleware/validator.js";
+import { contentValidator } from "../../middleware/validator.js";
 
 const router = Router("/challs");
 
@@ -18,13 +18,14 @@ router.get(
 router.post(
   "/:targetMonth/:targetWeek",
   isAuth,
-  challengeValidator,
+  contentValidator,
   challengeController.createChallenge
 );
 
 router.put(
   "/:targetMonth/:targetWeek",
   isAuth,
+  contentValidator,
   challengeController.updateChallenge
 );
 

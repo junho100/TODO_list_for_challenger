@@ -49,43 +49,15 @@ export const loginValidator = [
   },
 ];
 
-export const goalValidator = [
-  body("content").trim().notEmpty().withMessage("necessary"),
-  param("targetMonth")
-    .trim()
-    .notEmpty()
-    .withMessage("necessary")
-    .isLength({ max: 6, min: 6 })
-    .withMessage("length should be 6"),
+export const contentValidator = [
+  body("content").trim().notEmpty().withMessage("content is necessary"),
   (req, res, next) => {
     const err = validationResult(req);
     if (!err.isEmpty()) {
-      return res.status(400).json({ message: err.array()[0].msg });
-    }
-    next();
-  },
-];
-
-export const challengeValidator = [
-  body("content").trim().notEmpty().withMessage("necessary"),
-  param("targetMonth")
-    .trim()
-    .notEmpty()
-    .withMessage("necessary")
-    .isLength({ max: 6, min: 6 })
-    .withMessage("length should be 6"),
-  param("targetWeek")
-    .trim()
-    .notEmpty()
-    .withMessage("necessary")
-    .isLength({ min: 1, max: 1 })
-    .withMessage("length should be 1")
-    .isInt({ max: 5, min: 1 })
-    .withMessage("1 <= target week <= 5"),
-  (req, res, next) => {
-    const err = validationResult(req);
-    if (!err.isEmpty()) {
-      return res.status(400).json({ message: err.array()[0].msg });
+      const errmsgs = err.array().map((e) => {
+        return e.msg;
+      });
+      return res.status(400).send(errmsgs);
     }
     next();
   },
