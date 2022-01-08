@@ -25,7 +25,6 @@ router.post(
 router.put(
   "/:targetMonth/:targetWeek",
   isAuth,
-  contentValidator,
   challengeController.updateChallenge
 );
 

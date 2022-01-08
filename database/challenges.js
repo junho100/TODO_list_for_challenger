@@ -1,60 +1,124 @@
 import pool from "./database.js";
+import { sequelize } from "./database.js";
+import SQ from "sequelize";
+
+const Challenge = sequelize.define("challenge", {
+  id: {
+    type: SQ.DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
+  username: {
+    type: SQ.DataTypes.STRING,
+    allowNull: false,
+  },
+  content: {
+    type: SQ.DataTypes.TEXT,
+    allowNull: false,
+  },
+  targetMonth: {
+    type: SQ.DataTypes.STRING,
+    allowNull: false,
+  },
+  targetWeek: {
+    type: SQ.DataTypes.STRING,
+    allowNull: false,
+  },
+  isDone: {
+    type: SQ.DataTypes.BOOLEAN,
+    allowNull: false,
+  },
+});
 
 export async function getByUsername(username) {
-  const result = await pool.execute(
-    `SELECT * FROM challenges WHERE username=?`,
-    [username]
-  );
-  return result[0];
+  return await Challenge.findAll({
+    where: { username },
+  });
 }
 
 export async function getByTargetMonth(username, targetMonth) {
-  const result = await pool.execute(
-    `SELECT * FROM challenges WHERE username=? AND targetMonth=?`,
-    [username, targetMonth]
-  );
-  return result[0];
+  return await Challenge.findAll({
+    where: {
+      username,
+      targetMonth,
+    },
+  });
 }
 
 export async function getByTargetWeek(username, targetMonth, targetWeek) {
-  const result = await pool.execute(
-    `SELECT * FROM challenges WHERE username=? AND targetMonth=? AND targetWeek=?`,
-    [username, targetMonth, targetWeek]
-  );
-  return result[0][0];
+  return await Challenge.findOne({
+    where: {
+      username,
+      targetMonth,
+      targetWeek,
+    },
+  });
 }
 
 export async function create(username, content, targetMonth, targetWeek) {
-  await pool.execute(
-    `INSERT INTO challenges (username, content, targetMonth, targetWeek, isDone) VALUES (?, ?, ?, ?, ?)`,
-    [username, content, targetMonth, targetWeek, false]
-  );
+  return await Challenge.create({
+    username,
+    content,
+    targetMonth,
+    targetWeek,
+    isDone: false,
+  });
 }
 
 export async function update(username, targetMonth, targetWeek, content) {
-  await pool.execute(
-    `UPDATE challenges
-    SET content = ? 
-    WHERE targetMonth=? AND username=? AND targetWeek=?`,
-    [content, targetMonth, username, targetWeek]
+  return await Challenge.update(
+    {
+      content,
+    },
+    {
+      where: {
+        targetMonth,
+        targetWeek,
+        username,
+      },
+    }
   );
 }
 
 export async function remove(username, targetMonth, targetWeek) {
-  await pool.execute(
-    `DELETE FROM challenges WHERE username=? AND targetMonth=? AND targetWeek=?`,
-    [username, targetMonth, targetWeek]
-  );
+  return await Challenge.destroy({
+    where: {
+      username,
+      targetMonth,
+      targetWeek,
+    },
+  });
 }
 
 export async function toggleDone(username, targetMonth, targetWeek) {
-  await pool.execute(
-    `UPDATE challenges
-    SET isDone = CASE 
-    WHEN isDone=0 THEN 1 
-    ELSE 0
-    END
-    WHERE targetMonth=? AND username=? AND targetWeek=?`,
-    [targetMonth, username, targetWeek]
-  );
+  const data = await Challenge.findOne({
+    where: {
+      username,
+      targetMonth,
+      targetWeek,
+    },
+  });
+
+  if (data.isDone === true) {
+    return await Challenge.update(
+      { isDone: false },
+      {
+        where: {
+          username,
+          targetMonth,
+        },
+      }
+    );
+  } else {
+    return await Challenge.update(
+      { isDone: true },
+      {
+        where: {
+          username,
+          targetMonth,
+        },
+      }
+    );
+  }
 }
