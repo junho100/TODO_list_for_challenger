@@ -1,25 +1,35 @@
 import pool from "./database.js";
+import SQ from "sequelize";
+import { sequelize } from "./database.js";
+
+const User = sequelize.define("user", {
+  username: {
+    type: SQ.DataTypes.STRING,
+    allowNull: false,
+    primaryKey: true,
+  },
+  password: {
+    type: SQ.DataTypes.STRING,
+    allowNull: false,
+  },
+  name: {
+    type: SQ.DataTypes.STRING,
+    allowNull: false,
+  },
+});
 
 export async function create(username, password, name) {
-  return pool
-    .execute(`INSERT INTO users (username, password, name) VALUES (?, ?, ?)`, [
-      username,
-      password,
-      name,
-    ])
-    .then(() => {
-      return true;
-    })
-    .catch((e) => {
-      console.log(e);
-      return false;
-    });
+  return User.create({
+    username,
+    password,
+    name,
+  });
 }
 
 export async function getByUsername(username) {
-  return pool
-    .execute(`SELECT * FROM users WHERE username=?`, [username])
-    .then((user) => {
-      return user[0][0];
-    });
+  return User.findOne({
+    where: {
+      username,
+    },
+  });
 }

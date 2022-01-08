@@ -16,12 +16,7 @@ router.post(
   goalController.createGoal
 );
 
-router.put(
-  "/:targetMonth",
-  isAuth,
-  contentValidator,
-  goalController.updateGoal
-);
+router.put("/:targetMonth", isAuth, goalController.updateGoal);
 
 router.delete("/:targetMonth", isAuth, goalController.deleteGoal);
 

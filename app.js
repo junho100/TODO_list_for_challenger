@@ -6,6 +6,7 @@ import config from "./config.js";
 import goalRouter from "./router/goals/goals.js";
 import challengeRouter from "./router/challenges/challenges.js";
 import authRouter from "./router/auth/auth.js";
+import { sequelize } from "./database/database.js";
 
 const app = express();
 
@@ -26,4 +27,6 @@ app.use((error, req, res, next) => {
   res.status(500).send("Something went wrong!");
 });
 
-app.listen(config.server.port);
+sequelize.sync().then(() => {
+  app.listen(config.server.port);
+});
