@@ -1,0 +1,51 @@
+body {
+  margin: 20px;
+}
+a {
+  text-decoration: none;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+#header_btns > button {
+  display: block;
+}
+#header_btns {
+  display: flex;
+  align-items: center;
+}
+
+main {
+  border: 3px solid black;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form {
+  margin: 250px 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+form > input {
+  margin-bottom: 20px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+}
+footer > ul {
+  list-style: none;
+}
+footer > ul > li {
+  margin: 5px;
+  font-size: smaller;
+  color: gray;
+}
