@@ -62,5 +62,3 @@ export const contentValidator = [
     next();
   },
 ];
-
-//TODO : 진행유무와 글 수정 분리
