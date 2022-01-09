@@ -1,0 +1,117 @@
+body {
+  margin: 20px;
+}
+a {
+  text-decoration: none;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+#header_btns > button {
+  display: block;
+}
+#header_btns {
+  display: flex;
+  align-items: center;
+}
+
+main {
+  border: 3px solid black;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#main_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main_header > h2,
+select {
+  margin-right: 20px;
+}
+#main_header select {
+  width: 100px;
+  height: 30px;
+}
+
+#main_main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#main_main > div {
+  margin: 10px;
+  width: 40%;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+}
+#main_main > div > h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main_main > div > form,
+#main_main > div > div {
+  margin: 15px;
+  border: 1px solid black;
+  border-radius: 30px;
+}
+#goal > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+textarea {
+  width: 30%;
+  height: 15%;
+  margin-bottom: 20px;
+}
+#challenge > div > .create_form {
+  border-bottom: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  padding: 15px;
+}
+#challenge > div > div > form {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+#challenge > div > div > form > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.before_create {
+  border-bottom: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  padding: 15px;
+}
+#challenge > div > div:last-child {
+  border-bottom: none;
+}
+#challenge > div > div > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+}
+footer > ul {
+  list-style: none;
+}
+footer > ul > li {
+  margin: 5px;
+  font-size: smaller;
+  color: gray;
+}
