@@ -18,6 +18,7 @@ header {
 
 main {
   border: 3px solid black;
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,9 +52,41 @@ main {
   justify-content: center;
   align-items: center;
 }
+#main_main > div > div {
+  margin: 15px;
+  border: 1px solid black;
+  border-radius: 30px;
+}
 #goal > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#challenge > div > div {
+  border-bottom: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  padding: 15px;
+}
+#challenge > div > div:last-child {
+  border-bottom: none;
+}
+#challenge > div > div > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+}
+footer > ul {
+  list-style: none;
+}
+footer > ul > li {
+  margin: 5px;
+  font-size: smaller;
+  color: gray;
 }
