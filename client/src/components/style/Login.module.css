@@ -1,0 +1,7 @@
+.btns {
+  display: flex;
+  align-items: center;
+}
+.btns > button {
+  display: block;
+}
