@@ -1,10 +1,15 @@
 import styles from "../style/Login.module.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
     <div className={styles.btns}>
-      <button>login</button>
-      <button>signup</button>
+      <Link to="/login">
+        <button>login</button>
+      </Link>
+      <Link to="/signup">
+        <button>signup</button>
+      </Link>
     </div>
   );
 };
