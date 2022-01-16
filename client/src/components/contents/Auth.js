@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "../style/Auth.module.css";
 
+const TOKEN = "token";
+
 const Auth = ({ loginType }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +24,8 @@ const Auth = ({ loginType }) => {
         name,
       })
       .then((res) => {
+        localStorage.setItem(TOKEN, res.data.token);
+        window.location.replace("/");
         clearForm();
       })
       .catch((e) => {
@@ -38,7 +42,8 @@ const Auth = ({ loginType }) => {
         password,
       })
       .then((res) => {
-        console.log(res);
+        localStorage.setItem(TOKEN, res.data.token);
+        window.location.replace("/");
         clearForm();
       })
       .catch((e) => {
@@ -86,6 +91,7 @@ const Auth = ({ loginType }) => {
           type="text"
           placeholder="Write your name"
         ></input>
+
         <button onClick={signup}>Submit</button>
       </form>
     );

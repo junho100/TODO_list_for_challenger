@@ -7,17 +7,22 @@ import Login from "./routes/Login.js";
 const App = () => {
   const [user, setUser] = useState("");
   useEffect(() => {
+    const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:8080/auth/me")
-      .then((username) => {
-        setUser(username);
+      .get("http://localhost:8080/auth/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setUser(res.data);
       })
       .catch((e) => {
         if (e.response.status === 401) {
           console.log("login is required");
         }
       });
-  });
+  }, [user]);
   return (
     <div>
       <Routes>
