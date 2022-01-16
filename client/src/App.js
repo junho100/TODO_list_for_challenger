@@ -26,7 +26,10 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Main login={user} />}></Route>
+        <Route
+          path="/"
+          element={<Main isLogin={user ? true : false} />}
+        ></Route>
         <Route
           path="/login"
           element={<Login loginType="login"></Login>}

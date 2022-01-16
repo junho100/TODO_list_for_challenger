@@ -3,21 +3,11 @@ import Contents from "../components/contents/Contents.js";
 import Footer from "../components/footer/Footer.js";
 import styles from "./global.module.css";
 
-const Main = ({ login }) => {
-  if (!login) {
-    return (
-      <div className={styles.page}>
-        <Header isLogin={false}></Header>
-        <Contents></Contents>
-        <Footer></Footer>
-      </div>
-    );
-  }
-
+const Main = ({ isLogin }) => {
   return (
     <div className={styles.page}>
-      <Header isLogin={true}></Header>
-      <Contents></Contents>
+      <Header isLogin={isLogin}></Header>
+      <Contents isLogin={isLogin}></Contents>
       <Footer></Footer>
     </div>
   );
