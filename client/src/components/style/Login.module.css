@@ -5,3 +5,14 @@
 .btns > button {
   display: block;
 }
+
+.login {
+  display: flex;
+  align-items: center;
+}
+.login > * {
+  display: block;
+}
+.login > span {
+  margin-right: 5px;
+}

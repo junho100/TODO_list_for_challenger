@@ -2,7 +2,7 @@ import Title from "./Title.js";
 import Login from "./Login.js";
 import styles from "../style/Header.module.css";
 
-const Header = ({ isLogin }) => {
+const Header = ({ isLogin, user }) => {
   if (!isLogin) {
     return (
       <div className={styles.header}>
@@ -15,7 +15,7 @@ const Header = ({ isLogin }) => {
   return (
     <div className={styles.header}>
       <Title></Title>
-      <Login isLogin={isLogin}></Login>
+      <Login isLogin={isLogin} user={user}></Login>
     </div>
   );
 };

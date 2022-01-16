@@ -28,7 +28,7 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={<Main isLogin={user ? true : false} />}
+          element={<Main isLogin={user ? true : false} user={user} />}
         ></Route>
         <Route
           path="/login"

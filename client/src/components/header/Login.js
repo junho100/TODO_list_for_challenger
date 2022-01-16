@@ -1,7 +1,7 @@
 import styles from "../style/Login.module.css";
 import { Link } from "react-router-dom";
 
-const Login = ({ isLogin }) => {
+const Login = ({ isLogin, user }) => {
   if (!isLogin) {
     return (
       <div className={styles.btns}>
@@ -16,8 +16,8 @@ const Login = ({ isLogin }) => {
   }
 
   return (
-    <div>
-      <span>ellie</span>
+    <div className={styles.login}>
+      <span>{`Welcome ${user}`}</span>
       <button
         onClick={() => {
           localStorage.removeItem("token");
