@@ -1,8 +1,7 @@
 import styles from "../style/ToDoHeader.module.css";
 import { useState, useEffect } from "react";
 
-const ToDoHeader = ({ goals }) => {
-  const [presentIdx, setPresentIdx] = useState(0);
+const ToDoHeader = ({ goals, presentIdx, setPresentIdx }) => {
   if (goals.length === 0) {
     return (
       <div className={styles.notodo}>
