@@ -1,12 +1,21 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import styles from "../style/Challenge.module.css";
 
-const Challenge = ({ goals, presentIdx }) => {
+const Challenge = ({ content, targetWeek, isDone }) => {
+  if (content) {
+    return (
+      <div className={`${styles.withchallenge} ${styles.challenge}`}>
+        <h4>{targetWeek}</h4>
+        <div>{content}</div>
+        <div>
+          <input type="checkbox" defaultChecked={isDone ? true : false}></input>
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className={styles.challenge}>
-      <h3>Challenge of this month</h3>
-      <div></div>
+    <div className={`${styles.nochallenge} ${styles.challenge}`}>
+      <h4>{targetWeek}</h4>
+      <div>No Content!</div>
     </div>
   );
 };

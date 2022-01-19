@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Goal from "./Goal.js";
-import Challenge from "./Challenge.js";
+import Challenges from "./Challenges.js";
 import ToDoHeader from "./ToDoHeader.js";
 import styles from "../style/ToDo.module.css";
 
@@ -36,7 +36,7 @@ const ToDo = ({ user }) => {
       ></ToDoHeader>
       <main>
         <Goal goals={goals} presentIdx={presentIdx}></Goal>
-        <Challenge goals={goals} presentIdx={presentIdx}></Challenge>
+        <Challenges goals={goals} presentIdx={presentIdx}></Challenges>
       </main>
     </div>
   );

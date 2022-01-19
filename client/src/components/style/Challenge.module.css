@@ -1,19 +1,23 @@
 .challenge {
+  border-bottom: 1px solid black;
+}
+.challenge:last-child {
+  border: none;
+}
+
+.withchallenge {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.nochallenge {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.withchallenge > *,
+.nochallenge > * {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.challenge > h3 {
-  margin: 0;
-}
-
-.challenge > div {
-  border: 3px solid black;
-  border-radius: 30px;
-  width: 80%;
-  height: 85%;
 }
