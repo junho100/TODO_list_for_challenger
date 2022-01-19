@@ -8,6 +8,8 @@ const Challenge = ({ content, targetWeek, isDone }) => {
         <div>{content}</div>
         <div>
           <input type="checkbox" defaultChecked={isDone ? true : false}></input>
+          <button>Update</button>
+          <button>X</button>
         </div>
       </div>
     );
@@ -15,7 +17,10 @@ const Challenge = ({ content, targetWeek, isDone }) => {
   return (
     <div className={`${styles.nochallenge} ${styles.challenge}`}>
       <h4>{targetWeek}</h4>
-      <div>No Content!</div>
+      <div>No Challenge!</div>
+      <div>
+        <button>Create</button>
+      </div>
     </div>
   );
 };

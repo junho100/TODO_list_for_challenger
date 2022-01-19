@@ -38,6 +38,10 @@ const Goal = ({ goals, presentIdx }) => {
             type="checkbox"
             checked={isDone}
           ></input>
+          <div className={styles.goalRUD}>
+            <button>Update</button>
+            <button>X</button>
+          </div>
         </div>
       </div>
     );

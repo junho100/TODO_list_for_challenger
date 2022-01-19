@@ -52,14 +52,17 @@ const Challenges = ({ goals, presentIdx }) => {
     if (presentIdx !== undefined && goals.length !== 0) {
       getChallenges();
     }
-  }, [presentIdx]);
+  }, [presentIdx, goals]);
+  if (goals.length !== 0) {
+    return (
+      <div className={styles.challenge}>
+        <h3>Challenge of this month</h3>
+        <div className={styles.challs}>{renderChallenge()}</div>
+      </div>
+    );
+  }
 
-  return (
-    <div className={styles.challenge}>
-      <h3>Challenge of this month</h3>
-      <div className={styles.challs}>{renderChallenge()}</div>
-    </div>
-  );
+  return <div className={styles.challenge}></div>;
 };
 
 export default Challenges;

@@ -14,6 +14,16 @@ const ToDoHeader = ({ goals, presentIdx, setPresentIdx }) => {
   return (
     <div className={styles.todo}>
       <h2>{goals[presentIdx].targetMonth}</h2>
+      <input
+        onChange={(e) => {
+          const date = e.target.valueAsDate;
+          const target =
+            String(date.getFullYear()) +
+            String(date.getMonth() + 1).padStart(2, "0");
+          console.log(target);
+        }}
+        type="month"
+      ></input>
       <select
         onChange={(e) => {
           setPresentIdx(e.target.options.selectedIndex);
@@ -23,6 +33,7 @@ const ToDoHeader = ({ goals, presentIdx, setPresentIdx }) => {
           return <option key={goal.id}>{goal.targetMonth}</option>;
         })}
       </select>
+      <button>+</button>
     </div>
   );
 };
