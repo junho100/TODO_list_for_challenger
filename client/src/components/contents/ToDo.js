@@ -8,6 +8,7 @@ import styles from "../style/ToDo.module.css";
 const ToDo = ({ user }) => {
   const [goals, setGoals] = useState([]);
   const [presentIdx, setPresentIdx] = useState(0);
+  const [createGoalMode, setCreateGoalMode] = useState(false);
 
   const getGoals = async () => {
     const token = localStorage.getItem("token");
@@ -26,17 +27,27 @@ const ToDo = ({ user }) => {
     if (user) {
       getGoals();
     }
-  }, []);
+  }, [createGoalMode]);
   return (
     <div className={styles.todo}>
       <ToDoHeader
         goals={goals}
         presentIdx={presentIdx}
         setPresentIdx={setPresentIdx}
+        setCreateGoalMode={setCreateGoalMode}
       ></ToDoHeader>
       <main>
-        <Goal goals={goals} presentIdx={presentIdx}></Goal>
-        <Challenges goals={goals} presentIdx={presentIdx}></Challenges>
+        <Goal
+          goals={goals}
+          presentIdx={presentIdx}
+          createGoalMode={createGoalMode}
+          setCreateGoalMode={setCreateGoalMode}
+        ></Goal>
+        <Challenges
+          goals={goals}
+          presentIdx={presentIdx}
+          createGoalMode={createGoalMode}
+        ></Challenges>
       </main>
     </div>
   );

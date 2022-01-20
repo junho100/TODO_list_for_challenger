@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "../style/Challenges.module.css";
 import Challenge from "./Challenge.js";
 
-const Challenges = ({ goals, presentIdx }) => {
+const Challenges = ({ goals, presentIdx, createGoalMode }) => {
   const [challenges, setChallenges] = useState([]);
 
   const getChallenges = async () => {
@@ -53,6 +53,20 @@ const Challenges = ({ goals, presentIdx }) => {
       getChallenges();
     }
   }, [presentIdx, goals]);
+  if (createGoalMode) {
+    return (
+      <div className={styles.challenge}>
+        <h3>How to create</h3>
+        <div className={styles.desc}>
+          <ol>
+            <li>Choose year and month</li>
+            <li>Write your Goal in the month</li>
+            <li>Press Submit!</li>
+          </ol>
+        </div>
+      </div>
+    );
+  }
   if (goals.length !== 0) {
     return (
       <div className={styles.challenge}>

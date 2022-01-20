@@ -13,7 +13,10 @@
   align-items: center;
   justify-content: center;
 }
+.todo > div > h5 {
+  margin: 0;
+}
 .todo > h2,
-.todo > select {
+.todo > div {
   margin-right: 20px;
 }
