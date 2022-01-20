@@ -53,7 +53,7 @@ const Challenges = ({ goals, presentIdx, goalMode }) => {
       getChallenges();
     }
   }, [presentIdx, goals]);
-  if (goalMode) {
+  if (goalMode === 0) {
     return (
       <div className={styles.challenge}>
         <h3>How to create</h3>

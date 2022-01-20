@@ -22,10 +22,9 @@ const Goal = ({ goals, presentIdx, goalMode, setGoalMode }) => {
             <input
               onChange={(e) => {
                 const year = String(e.target.valueAsDate.getFullYear());
-                const month = String(e.target.valueAsDate.getMonth()).padStart(
-                  2,
-                  "0"
-                );
+                const month = String(
+                  e.target.valueAsDate.getMonth() + 1
+                ).padStart(2, "0");
                 setCreatingMonth(year + month);
               }}
               type="month"
@@ -54,6 +53,10 @@ const Goal = ({ goals, presentIdx, goalMode, setGoalMode }) => {
                     setCreatingMonth("");
                     setCreatingContent("");
                     setGoalMode(1);
+                  })
+                  .catch((e) => {
+                    console.log(e.response);
+                    console.log(creatingMonth);
                   });
               }}
             >
