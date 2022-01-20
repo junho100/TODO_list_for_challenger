@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import styles from "../style/Goal.module.css";
 
-const Goal = ({ goals, presentIdx, createGoalMode, setCreateGoalMode }) => {
+const Goal = ({ goals, presentIdx, goalMode, setGoalMode }) => {
   const [isDone, setIsDone] = useState(false);
   const [creatingMonth, setCreatingMonth] = useState("");
   const [creatingContent, setCreatingContent] = useState("");
@@ -13,7 +13,7 @@ const Goal = ({ goals, presentIdx, createGoalMode, setCreateGoalMode }) => {
       setIsDone(goals[presentIdx].isDone);
     }
   }, []);
-  if (createGoalMode) {
+  if (goalMode === 0) {
     return (
       <div className={styles.goal}>
         <h3>Create Goal</h3>
@@ -53,7 +53,7 @@ const Goal = ({ goals, presentIdx, createGoalMode, setCreateGoalMode }) => {
                   .then(() => {
                     setCreatingMonth("");
                     setCreatingContent("");
-                    setCreateGoalMode(false);
+                    setGoalMode(1);
                   });
               }}
             >
@@ -64,7 +64,46 @@ const Goal = ({ goals, presentIdx, createGoalMode, setCreateGoalMode }) => {
       </div>
     );
   }
-  if (goals.length !== 0) {
+  if (goalMode === 2) {
+    return (
+      <div className={styles.goal}>
+        <h3>Update goal</h3>
+        <div>
+          <form className={styles.create_form}>
+            <textarea
+              onChange={(e) => {
+                setCreatingContent(e.target.value);
+              }}
+            ></textarea>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                axios
+                  .put(
+                    `http://localhost:8080/goals/${goals[presentIdx].targetMonth}`,
+                    {
+                      content: creatingContent,
+                    },
+                    {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    }
+                  )
+                  .then(() => {
+                    setCreatingContent("");
+                    setGoalMode(1);
+                  });
+              }}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+  if (goals.length !== 0 && goalMode === 1) {
     return (
       <div className={styles.goal}>
         <h3>Goal of this month</h3>
@@ -92,8 +131,32 @@ const Goal = ({ goals, presentIdx, createGoalMode, setCreateGoalMode }) => {
             checked={isDone}
           ></input>
           <div className={styles.goalRUD}>
-            <button>Update</button>
-            <button>X</button>
+            <button
+              onClick={() => {
+                setGoalMode(2);
+              }}
+            >
+              Update
+            </button>
+            <button
+              onClick={() => {
+                axios
+                  .delete(
+                    `http://localhost:8080/goals/${goals[presentIdx].targetMonth}`,
+                    {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    }
+                  )
+                  .then(() => {
+                    setGoalMode(1);
+                    window.location.replace("/");
+                  });
+              }}
+            >
+              X
+            </button>
           </div>
         </div>
       </div>

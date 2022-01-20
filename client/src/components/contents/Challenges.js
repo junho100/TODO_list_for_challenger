@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "../style/Challenges.module.css";
 import Challenge from "./Challenge.js";
 
-const Challenges = ({ goals, presentIdx, createGoalMode }) => {
+const Challenges = ({ goals, presentIdx, goalMode }) => {
   const [challenges, setChallenges] = useState([]);
 
   const getChallenges = async () => {
@@ -53,7 +53,7 @@ const Challenges = ({ goals, presentIdx, createGoalMode }) => {
       getChallenges();
     }
   }, [presentIdx, goals]);
-  if (createGoalMode) {
+  if (goalMode) {
     return (
       <div className={styles.challenge}>
         <h3>How to create</h3>

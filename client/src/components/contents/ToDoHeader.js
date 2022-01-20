@@ -4,7 +4,8 @@ const ToDoHeader = ({
   goals,
   presentIdx,
   setPresentIdx,
-  setCreateGoalMode,
+  setGoalMode,
+  goalMode,
 }) => {
   if (goals.length === 0) {
     return (
@@ -17,11 +18,14 @@ const ToDoHeader = ({
 
   return (
     <div className={styles.todo}>
-      <h2>{goals[presentIdx].targetMonth}</h2>
+      <h2>
+        {goalMode !== 0 ? goals[presentIdx].targetMonth : "Write yout goal"}
+      </h2>
       <div>
         <h5>Shortcut</h5>
         <select
           onChange={(e) => {
+            setGoalMode(1);
             setPresentIdx(e.target.options.selectedIndex);
           }}
         >
@@ -32,7 +36,7 @@ const ToDoHeader = ({
       </div>
       <button
         onClick={() => {
-          setCreateGoalMode(true);
+          setGoalMode(0);
         }}
       >
         +
