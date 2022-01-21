@@ -1,26 +1,20 @@
 .challenge {
   border-bottom: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 .challenge:last-child {
   border: none;
 }
-
-.withchallenge {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-}
-.withchallenge input {
+.challenge input {
   margin: 0;
 }
-
-.nochallenge {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-}
-
-.withchallenge > *,
-.nochallenge > * {
+.challenge > * {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.create {
+  width: 100%;
 }

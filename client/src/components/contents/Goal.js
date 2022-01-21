@@ -116,7 +116,7 @@ const Goal = ({ goals, presentIdx, goalMode, setGoalMode }) => {
             <li>{goals[presentIdx].updatedAt}</li>
           </ul>
           <input
-            onChange={(e) => {
+            onChange={() => {
               setIsDone((current) => !current);
               axios
                 .put(

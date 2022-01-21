@@ -6,7 +6,7 @@ import Challenge from "./Challenge.js";
 const Challenges = ({ goals, presentIdx, goalMode }) => {
   const [challenges, setChallenges] = useState([]);
 
-  const getChallenges = async () => {
+  const getChallenges = () => {
     const token = localStorage.getItem("token");
     const targetMonth = goals[presentIdx].targetMonth;
     axios
@@ -20,13 +20,16 @@ const Challenges = ({ goals, presentIdx, goalMode }) => {
       })
       .catch((e) => {
         if (e.response.status === 404) {
-          setChallenges(() => []);
+          setChallenges(() => {
+            return [];
+          });
         }
       });
   };
 
   const renderChallenge = () => {
     const challs = [];
+    const targetMonth = goals[presentIdx].targetMonth;
     for (let i = 1; i < 6; i++) {
       const target = challenges.find((challenge) => {
         return challenge.targetWeek === String(i);
@@ -36,15 +39,21 @@ const Challenges = ({ goals, presentIdx, goalMode }) => {
           <Challenge
             key={i}
             content={target.content}
-            targetWeek={i}
+            targetWeek={String(i)}
             isDone={target.isDone}
+            targetMonth={targetMonth}
           ></Challenge>
         );
       } else {
-        challs.push(<Challenge key={i} targetWeek={i}></Challenge>);
+        challs.push(
+          <Challenge
+            key={i}
+            targetWeek={String(i)}
+            targetMonth={targetMonth}
+          ></Challenge>
+        );
       }
     }
-
     return challs;
   };
 

@@ -20,8 +20,6 @@
 
 ## Dependencies
 
-## External Resource
+## ToDo
 
-## Discussion & Obstacles
-
-### GET 요청에 request body 추가
+- goals 전달 시 날짜순으로 정렬하여 전달
