@@ -95,7 +95,7 @@ const Challenge = ({ content, targetWeek, isDone, targetMonth }) => {
             <input
               type="checkbox"
               defaultChecked={isDone ? true : false}
-              onChange={() => {
+              onClick={() => {
                 const token = localStorage.getItem("token");
                 axios.put(
                   `http://localhost:8080/challs/${targetMonth}/${targetWeek}`,

@@ -107,6 +107,7 @@ export async function toggleDone(username, targetMonth, targetWeek) {
         where: {
           username,
           targetMonth,
+          targetWeek,
         },
       }
     );
@@ -117,6 +118,7 @@ export async function toggleDone(username, targetMonth, targetWeek) {
         where: {
           username,
           targetMonth,
+          targetWeek,
         },
       }
     );

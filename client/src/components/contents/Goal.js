@@ -10,9 +10,17 @@ const Goal = ({ goals, presentIdx, goalMode, setGoalMode }) => {
 
   useEffect(() => {
     if (goals.length !== 0) {
-      setIsDone(goals[presentIdx].isDone);
+      axios
+        .get(`http://localhost:8080/goals/${goals[presentIdx].targetMonth}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setIsDone(res.data.isDone);
+        });
     }
-  }, []);
+  });
   if (goalMode === 0) {
     return (
       <div className={styles.goal}>
@@ -131,7 +139,7 @@ const Goal = ({ goals, presentIdx, goalMode, setGoalMode }) => {
                 .catch((err) => console.log);
             }}
             type="checkbox"
-            checked={isDone}
+            checked={isDone ? true : false}
           ></input>
           <div className={styles.goalRUD}>
             <button
