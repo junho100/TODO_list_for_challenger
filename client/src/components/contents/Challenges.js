@@ -58,7 +58,7 @@ const Challenges = ({ goals, presentIdx, goalMode }) => {
   };
 
   useEffect(() => {
-    if (presentIdx !== undefined && goals.length !== 0) {
+    if (presentIdx !== undefined && goals.length !== 0 && goalMode !== 0) {
       getChallenges();
     }
   }, [presentIdx, goals]);

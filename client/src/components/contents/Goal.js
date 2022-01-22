@@ -2,14 +2,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import styles from "../style/Goal.module.css";
 
-const Goal = ({ goals, presentIdx, goalMode, setGoalMode }) => {
+const Goal = ({ goals, presentIdx, goalMode, setGoalMode, setPresentIdx }) => {
   const [isDone, setIsDone] = useState(false);
   const [creatingMonth, setCreatingMonth] = useState("");
   const [creatingContent, setCreatingContent] = useState("");
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (goals.length !== 0) {
+    if (goals.length !== 0 && goalMode === 1) {
       axios
         .get(`http://localhost:8080/goals/${goals[presentIdx].targetMonth}`, {
           headers: {
@@ -61,6 +61,7 @@ const Goal = ({ goals, presentIdx, goalMode, setGoalMode }) => {
                     setCreatingMonth("");
                     setCreatingContent("");
                     setGoalMode(1);
+                    setPresentIdx(undefined);
                   })
                   .catch((e) => {
                     console.log(e.response);
@@ -162,7 +163,7 @@ const Goal = ({ goals, presentIdx, goalMode, setGoalMode }) => {
                   )
                   .then(() => {
                     setGoalMode(1);
-                    window.location.replace("/");
+                    setPresentIdx(undefined);
                   });
               }}
             >
