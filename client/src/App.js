@@ -18,9 +18,7 @@ const App = () => {
         setUser(res.data);
       })
       .catch((e) => {
-        if (e.response.status === 401) {
-          console.log("login is required");
-        }
+        console.log("Please login");
       });
   }, [user]);
   return (

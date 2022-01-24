@@ -64,8 +64,9 @@ const Goal = ({ goals, presentIdx, goalMode, setGoalMode, setPresentIdx }) => {
                     setPresentIdx(undefined);
                   })
                   .catch((e) => {
-                    console.log(e.response);
-                    console.log(creatingMonth);
+                    if (e.response.data === "goal already exists") {
+                      alert(`Goal of ${creatingMonth} already exist!`);
+                    }
                   });
               }}
             >

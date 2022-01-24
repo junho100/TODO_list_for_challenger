@@ -28,21 +28,20 @@ export async function signup(req, res, next) {
         });
       }
       console.log(err);
-      return res.send("jwt sign error");
+      return res.status(401).send("jwt sign error");
     }
   );
 }
 
 export async function login(req, res, next) {
   const { username, password } = req.body;
-  const secKey = config.auth.secKey;
   const user = await userRepository.getByUsername(username);
   if (!user) {
     return res.status(400).send("login error");
   }
   const result = await bcrypt.compare(password, user.password);
   if (!result) {
-    return res.send("login error");
+    return res.status(401).send("login error");
   }
   return jwt.sign(
     {
@@ -60,7 +59,7 @@ export async function login(req, res, next) {
         });
       }
       console.log(err);
-      return res.send("jwt sign error");
+      return res.status(401).send("jwt sign error");
     }
   );
 }

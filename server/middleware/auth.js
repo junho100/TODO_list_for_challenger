@@ -8,6 +8,9 @@ export function isAuth(req, res, next) {
   }
 
   const token = tokenHeader.split(" ")[1];
+  if (token === "null") {
+    return res.status(401).send("Auth Error");
+  }
   return jwt.verify(token, config.auth.secKey, (err, decoded) => {
     if (err) {
       console.log(err);
