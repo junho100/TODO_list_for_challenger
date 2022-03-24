@@ -5,10 +5,12 @@
 
 ## Tech Stack I Used
 
-- NodeJS
-- Express
-- MySQL
-- Sequelize
+- NodeJS, Express
+- bcrypt, jsonwebtoken
+- MySQL, Sequelize
+- React
+- react-router-dom
+- axios
 
 ## Install
 
@@ -20,6 +22,43 @@
 
 ## Dependencies
 
-## ToDo
+- backend
 
-- goals 전달 시 날짜순으로 정렬하여 전달
+```
+{
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "create-react-app": "^5.0.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.12.4"
+  }
+}
+```
+
+- frontend
+
+```
+{
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.25.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "web-vitals": "^2.1.3"
+  }
+}
+```
+
+## ToDo
