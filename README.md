@@ -61,13 +61,6 @@
 }
 ```
 
-## 실행화면
-
-- 메인화면<br>
-  <img src = "https://user-images.githubusercontent.com/55343124/160352973-1299691b-81c4-4e3f-9d08-a39033e6f073.png" width = "700" height = "300">
-- 로그인 후 목표 수정화면<br>
-  <img src = "https://user-images.githubusercontent.com/55343124/160353021-3c76960c-3580-486a-bc2a-9c30cee550e8.png" width = "700" height = "300">
-
 ## API documentation
 
 - Goal (Monthly goal)<br>
